@@ -10,7 +10,9 @@
     "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.11",
     "@flyingtornado06/ui-kit": "^0.0.15",
+    "graphql": "^16.8.1",
     "next": "14.1.4",
     "prettier": "^3.2.5",
     "react": "^18",
