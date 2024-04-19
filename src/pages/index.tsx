@@ -1,12 +1,37 @@
-import { StyledTest } from '@/pages/styled'
-import { Button } from '@flyingtornado06/ui-kit'
-import Head from 'next/head'
-import styled, { css } from 'styled-components'
+import React from 'react'
 
-export default function Home() {
+const Home = (/*{ posts }: InferGetStaticPropsType<typeof getStaticProps>*/) => {
+  // if (isLoading) {
+  //   return <LoadingSpinner isLoading={isLoading} />
+  // }
+  //
+  // if (!me) {
+  //   void push(authNavigationUrls.signIn())
+  // }
+
   return (
-    <>
-      <Button></Button>
-    </>
+    <></>
+    // me && (
+    //   <>
+    //     {posts?.items?.map((item, index) => {
+    //       const filteredImages = item.images.filter(image => image.imageSize === IMAGE_SIZE.MEDIUM)
+    //
+    //       return (
+    //         <div key={item.id}>
+    //           <PostCard
+    //             avatarOwner={item.avatarOwner}
+    //             createdAt={item.createdAt}
+    //             description={item.description}
+    //             id={item.id}
+    //             images={filteredImages}
+    //             //comments={POST_COMMENTS?.comments}
+    //             ownerId={item.ownerId}
+    //             userName={item.userName}
+    //           />
+    //         </div>
+    //       )
+    //     })}
   )
 }
+
+export default Home

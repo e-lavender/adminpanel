@@ -1,5 +1,7 @@
 import { PropsWithChildren } from 'react'
 
+import { HeaderLayout } from '@/ui/templates/layouts/header-layout'
+
 type SidebarMenuLayoutProps = {
   isAuthed?: boolean
 }
