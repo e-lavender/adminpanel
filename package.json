@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,11 +10,13 @@
     "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input"
   },
   "dependencies": {
+    "@flyingtornado06/ui-kit": "^0.0.15",
     "next": "14.1.4",
     "prettier": "^3.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.2",
