@@ -2,14 +2,15 @@ import { StyledContainers } from '@/ui/common/styled/container.styled'
 import { styled } from 'styled-components'
 
 export const HeaderStyled = {
-  Container: styled(StyledContainers.GlobalContainer)`
+  Container: styled.div`
+    max-width: 128rem;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     height: 100%;
-    padding-right: 6.4rem;
-    padding-left: 6rem;
   `,
   Wrapper: styled.header`
     position: sticky;

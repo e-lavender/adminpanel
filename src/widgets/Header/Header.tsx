@@ -1,7 +1,8 @@
 import React from 'react'
 
+import { LanguageSelect } from '@/ui/components/language-select'
 import { HeaderStyled } from '@/widgets/Header/Header.styled'
-import { Select, Typography } from '@flyingtornado06/ui-kit'
+import { Typography } from '@flyingtornado06/ui-kit'
 
 export const Header = () => {
   const { Container, Wrapper } = HeaderStyled
@@ -12,9 +13,7 @@ export const Header = () => {
         <Typography as={'span'} variant={'large'}>
           Админ на последнем издыхании
         </Typography>
-        <Typography as={'span'} variant={'large'}>
-          Админ на последнем издыхании
-        </Typography>
+        <LanguageSelect />
       </Container>
     </Wrapper>
   )
