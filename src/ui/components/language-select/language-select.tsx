@@ -15,6 +15,7 @@ export const LanguageSelect = () => {
 
   const changeLangHandler = (value: string) => {
     void push({ pathname, query }, asPath, { locale: value })
+    debugger
   }
 
   return (
