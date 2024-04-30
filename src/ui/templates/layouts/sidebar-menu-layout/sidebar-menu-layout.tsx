@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react'
-import { SidebarMenu } from '@/ui/common/sidebar-menu'
 import { HeaderLayout } from '@/ui/templates/layouts/header-layout'
+import { SidebarMenuWithItems } from '@/ui/common/sidebar-menu-with-items/sidebar-menu-with-items'
 
 type SidebarMenuLayoutProps = {
   isAuthed?: boolean
@@ -15,7 +15,7 @@ export const SidebarMenuLayout = ({
       <HeaderLayout />
 
       <div>
-        {isAuthed && <SidebarMenu />}
+        {isAuthed && <SidebarMenuWithItems />}
 
         <div>{children}</div>
       </div>
