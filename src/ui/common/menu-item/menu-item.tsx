@@ -1,19 +1,30 @@
-import { ComponentPropsWithoutRef, ElementType, Fragment } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  ElementType,
+  Fragment,
+  NamedExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+  SVGProps,
+} from 'react'
 
-import { SVGIconType } from '@/app'
-import { Typography } from '@flyingtornado06/ui-kit'
 import * as SideBarMenu from '@radix-ui/react-navigation-menu'
-import { clsx } from 'clsx'
+
 import Link from 'next/link'
 
-import s from './menu-item.module.scss'
+import { MenuItemStyles } from './menu-item.styled'
+import { IconType } from '@/shared/types'
+
+type SVGIconType = NamedExoticComponent<
+  PropsWithoutRef<SVGProps<SVGSVGElement>> & RefAttributes<SVGSVGElement>
+>
 
 type MenuItemProps<T extends ElementType = typeof Link> = {
   as?: T
   asListItem?: boolean
   className?: string
   disabled?: boolean
-  icon?: SVGIconType
+  icon?: IconType
   isSelected?: boolean
   isStyled?: boolean
   label?: string
@@ -31,21 +42,14 @@ export const MenuItem = <T extends ElementType = typeof Link>({
   label,
   ...props
 }: MenuItemProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof MenuItemProps<T>>) => {
-  const SVGMenuIcon = icon || Fragment
-  const Component = as || Link
   const Container = asListItem ? SideBarMenu.Item : Fragment
-
-  const styles = {
-    label: clsx(isStyled && s.label, disabled && s.disabled),
-    link: clsx(s.link, isStyled && s.active, disabled && s.disabled, isSelected && s.selected),
-  }
-
+  const { LabelStyled, LinkComponent } = MenuItemStyles
+  const SVGMenuIcon = icon || Fragment
   return (
     <Container>
-      <Component
+      <LinkComponent
         aria-disabled={disabled}
         aria-hidden={disabled}
-        className={styles.link}
         href={href || null}
         tabIndex={disabled ? -1 : 0}
         {...props}
@@ -53,8 +57,8 @@ export const MenuItem = <T extends ElementType = typeof Link>({
         {children}
 
         <SVGMenuIcon />
-        <Typography className={styles.label}>{label}</Typography>
-      </Component>
+        <LabelStyled>{label}</LabelStyled>
+      </LinkComponent>
     </Container>
   )
 }
