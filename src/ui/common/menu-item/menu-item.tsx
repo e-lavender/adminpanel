@@ -1,23 +1,10 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementType,
-  Fragment,
-  NamedExoticComponent,
-  PropsWithoutRef,
-  RefAttributes,
-  SVGProps,
-} from 'react'
+import { ComponentPropsWithoutRef, ElementType, Fragment } from 'react'
 
+import { IconType } from '@/shared/types'
 import * as SideBarMenu from '@radix-ui/react-navigation-menu'
-
 import Link from 'next/link'
 
 import { MenuItemStyles } from './menu-item.styled'
-import { IconType } from '@/shared/types'
-
-type SVGIconType = NamedExoticComponent<
-  PropsWithoutRef<SVGProps<SVGSVGElement>> & RefAttributes<SVGSVGElement>
->
 
 type MenuItemProps<T extends ElementType = typeof Link> = {
   as?: T
@@ -45,6 +32,7 @@ export const MenuItem = <T extends ElementType = typeof Link>({
   const Container = asListItem ? SideBarMenu.Item : Fragment
   const { LabelStyled, LinkComponent } = MenuItemStyles
   const SVGMenuIcon = icon || Fragment
+
   return (
     <Container>
       <LinkComponent

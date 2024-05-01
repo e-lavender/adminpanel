@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+
 import { SidebarMenuStyles } from '@/ui/common/sidebar-menu/sidebar-menu.styled'
 
 export const SidebarMenu = ({ children, className }: PropsWithChildren<{ className?: string }>) => {
