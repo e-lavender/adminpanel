@@ -3,6 +3,6 @@ import { styled } from 'styled-components'
 
 export const SideBarMenuWithItemsStyles = {
   SidebarMenu: styled(SidebarMenu)`
-    max-width: 220px;
+    width: 22rem;
   `,
 }

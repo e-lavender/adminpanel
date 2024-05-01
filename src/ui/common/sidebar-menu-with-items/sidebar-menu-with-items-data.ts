@@ -5,25 +5,25 @@ import StatisticIcon from '@/assets/icons/statistic-icon'
 
 export const menuItemsData = [
   {
-    href: 'https://google.com',
+    href: '/users-list',
     icon: PersonIcon,
     id: 1,
     title: 'Users list',
   },
   {
-    href: 'https://google.com',
+    href: '/statistics',
     icon: StatisticIcon,
     id: 2,
     title: 'Statistics',
   },
   {
-    href: 'https://google.com',
+    href: '/payments-list',
     icon: PaymentList,
     id: 3,
     title: 'Payments list',
   },
   {
-    href: 'https://google.com',
+    href: '/posts-list',
     icon: PostsList,
     id: 4,
     title: 'Posts list',
