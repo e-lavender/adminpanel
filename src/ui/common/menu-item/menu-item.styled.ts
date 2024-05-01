@@ -1,8 +1,13 @@
-import { styled } from 'styled-components'
-import Link from 'next/link'
 import { Typography } from '@flyingtornado06/ui-kit'
+import Link from 'next/link'
+import { styled } from 'styled-components'
 
 export const MenuItemStyles = {
+  LabelStyled: styled(Typography)`
+    &:active {
+      color: var(--color-accent-500);
+    }
+  `,
   LinkComponent: styled(Link)`
     cursor: pointer;
 
@@ -40,22 +45,15 @@ export const MenuItemStyles = {
         color: var(--color-dark-100);
         outline: none;
       }
-
-      &:hover,
-      &:hover span {
-        color: var(--color-accent-100);
-      }
     }
-
+    &:hover,
+    &:hover span {
+      color: var(--color-accent-100);
+    }
     &.disabled,
     .disabled {
       pointer-events: none;
       color: var(--color-dark-100);
-    }
-  `,
-  LabelStyled: styled(Typography)`
-    &:active {
-      color: var(--color-accent-500);
     }
   `,
 }

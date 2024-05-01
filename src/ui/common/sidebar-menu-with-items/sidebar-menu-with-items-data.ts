@@ -1,31 +1,31 @@
+import PaymentList from '@/assets/icons/payment-list-icon'
 import PersonIcon from '@/assets/icons/person-icon'
 import PostsList from '@/assets/icons/posts-list'
-import PaymentList from '@/assets/icons/payment-list-icon'
 import StatisticIcon from '@/assets/icons/statistic-icon'
 
 export const menuItemsData = [
   {
-    id: 1,
+    href: '/users-list',
     icon: PersonIcon,
+    id: 1,
     title: 'Users list',
-    href: 'https://google.com',
   },
   {
-    id: 2,
+    href: '/statistics',
     icon: StatisticIcon,
+    id: 2,
     title: 'Statistics',
-    href: 'https://google.com',
   },
   {
-    id: 3,
+    href: '/payments-list',
     icon: PaymentList,
+    id: 3,
     title: 'Payments list',
-    href: 'https://google.com',
   },
   {
-    id: 4,
+    href: '/posts-list',
     icon: PostsList,
+    id: 4,
     title: 'Posts list',
-    href: 'https://google.com',
   },
 ]

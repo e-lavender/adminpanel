@@ -1,5 +1,5 @@
-import { styled } from 'styled-components'
 import * as SideBarMenu from '@radix-ui/react-navigation-menu'
+import { styled } from 'styled-components'
 export const SidebarMenuStyles = {
   Container: styled(SideBarMenu.Root)`
     height: calc(100lvh - 6rem);
