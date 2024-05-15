@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Header } from '@/widgets/Header/Header'
+import { SignInForm } from '@/features/auth/login/ui/SignInForm'
 
 const SignInPage = () => {
-  return <Header />
+  return <SignInForm />
 }
 
 export default SignInPage
