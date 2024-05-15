@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { useRouter } from 'next/router'
 
 const Home = (/*{ posts }: InferGetStaticPropsType<typeof getStaticProps>*/) => {
   // if (isLoading) {
   //   return <LoadingSpinner isLoading={isLoading} />
   // }
   //
-  // if (!me) {
-  //   void push(authNavigationUrls.signIn())
-  // }
+  const me = false
+  const { push } = useRouter()
+
+  useEffect(() => {
+    if (!me) {
+      void push('/auth/sign-in')
+    }
+  }, [me, push])
 
   return (
-    <></>
+    <>main page</>
     // me && (
     //   <>
     //     {posts?.items?.map((item, index) => {
