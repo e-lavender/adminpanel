@@ -8,15 +8,15 @@ export const SignInForm = () => {
   const { t } = useTranslation()
 
   const text = t.auth.signIn
-  const { control } = useSignInForm()
+  const { control, handleSubmit, onSignIn } = useSignInForm()
   const { Card } = SignInFormStyles
 
   return (
     <div>
       <Card>
-        <form>
+        <form onSubmit={handleSubmit(onSignIn)}>
           <div>
-            <Typography>SignIn</Typography>
+            <Typography variant={'h1'}>{text.title}</Typography>
 
             <ControlledTextField control={control} label={text.emailLabel} name={'email'} />
             <ControlledTextField

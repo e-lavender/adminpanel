@@ -1,10 +1,24 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: 'https://your-graphql-endpoint.com/graphql', // Укажите здесь URL вашего сервера GraphQL
-  }),
+const httpLink = createHttpLink({
+  uri: 'https://inctagram.work/api/v1/graphql',
 })
 
-export default client
+const authLink = setContext((_, { headers }) => {
+  const token = sessionStorage.getItem('authToken')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Basic ${token}` : '',
+    },
+  }
+})
+const cache = new InMemoryCache()
+
+export const client = new ApolloClient({
+  cache,
+  connectToDevTools: true,
+  link: authLink.concat(httpLink),
+})

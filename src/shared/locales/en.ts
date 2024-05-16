@@ -2,7 +2,7 @@ import { LocaleType } from '@/shared/locales/ru'
 import { AuthTextModel, HeaderTextModel } from '@/shared/locales/text-models'
 
 const header = HeaderTextModel.en
-const auth = AuthTextModel.ru
+const auth = AuthTextModel.en
 
 export const en: LocaleType = {
   auth: {

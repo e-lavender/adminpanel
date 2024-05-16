@@ -1,6 +1,6 @@
 {
   "name": "adminpanel",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +8,7 @@
     "start": "next start",
     "format": "prettier --write src",
     "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
+    "codegen": "graphql-codegen -r ts-node/register --config codegen.ts",
     "codegen:watch": "graphql-codegen --watch"
   },
   "dependencies": {
@@ -42,6 +43,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "stylelint": "16.3.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "ts-node": "10.9.2"
   }
 }

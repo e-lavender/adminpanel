@@ -10,7 +10,7 @@ type SidebarMenuLayoutProps = {
 
 export const SidebarMenuLayout = ({
   children,
-  isAuthed = true,
+  isAuthed = false,
 }: PropsWithChildren<SidebarMenuLayoutProps>) => {
   const { Container, Wrapper } = SidebarMenuLayoutStyled
 

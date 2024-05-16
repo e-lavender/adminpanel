@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 
 import React, { ReactElement, ReactNode } from 'react'
 
+import { Providers } from '@/app/providers/providers'
 import { WithHomePageLayout } from '@/ui/templates/layouts/temp-layout/template-layout'
 
 import '@/styles/index.css'
@@ -20,7 +21,11 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page: ReactElement) => page)
   //const { isLoading, message } = useLoadingSpinner()
 
-  return <WithHomePageLayout>{getLayout(<Component {...pageProps} />)}</WithHomePageLayout>
+  return (
+    <Providers>
+      <WithHomePageLayout>{getLayout(<Component {...pageProps} />)}</WithHomePageLayout>
+    </Providers>
+  )
 }
 
 export default App

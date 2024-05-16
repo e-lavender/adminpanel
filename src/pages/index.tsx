@@ -3,18 +3,15 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 const Home = (/*{ posts }: InferGetStaticPropsType<typeof getStaticProps>*/) => {
-  // if (isLoading) {
-  //   return <LoadingSpinner isLoading={isLoading} />
-  // }
-  //
-  const me = false
   const { push } = useRouter()
 
   useEffect(() => {
-    if (!me) {
+    const token = sessionStorage.getItem('isLoggedIn')
+
+    if (!token) {
       void push('/auth/sign-in')
     }
-  }, [me, push])
+  }, [push])
 
   return (
     <>main page</>
