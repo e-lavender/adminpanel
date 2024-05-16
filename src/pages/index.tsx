@@ -4,13 +4,14 @@ import { useRouter } from 'next/router'
 
 const Home = (/*{ posts }: InferGetStaticPropsType<typeof getStaticProps>*/) => {
   const { push } = useRouter()
-  const token = sessionStorage.getItem('isLoggedIn')
 
   useEffect(() => {
+    const token = sessionStorage.getItem('isLoggedIn')
+
     if (!token) {
       void push('/auth/sign-in')
     }
-  }, [token, push])
+  }, [push])
 
   return (
     <>main page</>
