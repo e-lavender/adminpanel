@@ -1,7 +1,7 @@
 import { CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
-  documents: ['./src/queries/**/*.ts'],
+  documents: ['./src/**/*.ts'],
   generates: {
     'src/': {
       config: {
@@ -10,14 +10,14 @@ const config: CodegenConfig = {
       plugins: ['typescript-operations', 'typescript-react-apollo'],
       preset: 'near-operation-file',
       presetConfig: {
-        baseTypesPath: 'types.ts',
-        extension: '.generated.tsx',
+        baseTypesPath: 'shared/appolo-client/Schema.types.ts',
+        extension: '.types.tsx',
       },
     },
-    'src/types.ts': { plugins: ['typescript'] },
+    'src/shared/appolo-client/Schema.types.ts': { plugins: ['typescript'] },
   },
-  ignoreNoDocuments: true, // for better experience with the watcher
-  schema: 'http://localhost:4000/graphql',
+  ignoreNoDocuments: true,
+  schema: 'https://instareplica.fun/api/v1/graphql',
 }
 
 export default config
