@@ -1,0 +1,18 @@
+{
+  "ru": {
+    "signIn": {
+      "title": "Вход",
+      "emailLabel": "Почта",
+      "passwordLabel": "Пароль",
+      "buttonTitle": "Войти"
+    }
+  },
+  "en": {
+    "signIn": {
+      "title": "Sign In",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "buttonTitle": "Sign In"
+    }
+  }
+}
