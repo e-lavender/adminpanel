@@ -17,7 +17,7 @@ const config: CodegenConfig = {
     'src/shared/appolo-client/Schema.types.ts': { plugins: ['typescript'] },
   },
   ignoreNoDocuments: true,
-  schema: 'https://instareplica.fun/api/v1/graphql',
+  schema: 'https://inctagram.work/api/v1/graphql',
 }
 
 export default config

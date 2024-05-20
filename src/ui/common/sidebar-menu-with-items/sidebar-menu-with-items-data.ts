@@ -5,7 +5,7 @@ import StatisticIcon from '@/assets/icons/statistic-icon'
 
 export const menuItemsData = [
   {
-    href: '/users-list',
+    href: '/users',
     icon: PersonIcon,
     id: 1,
     title: 'Users list',
