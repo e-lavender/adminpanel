@@ -32,6 +32,7 @@ export const USERS = gql`
           id
           lastName
           firstName
+          userName
           avatars {
             fileSize
             height
