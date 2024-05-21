@@ -13,7 +13,7 @@ export type GetAllUsersQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetAllUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', users: Array<{ __typename?: 'User', profile: { __typename?: 'Profile', createdAt: any, aboutMe?: string | null, city?: string | null, dateOfBirth?: any | null, id: number, lastName?: string | null, firstName?: string | null, avatars?: Array<{ __typename?: 'Avatar', fileSize?: number | null, height?: number | null, url?: string | null, width?: number | null }> | null } }> } };
+export type GetAllUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number }, users: Array<{ __typename?: 'User', profile: { __typename?: 'Profile', createdAt: any, aboutMe?: string | null, city?: string | null, dateOfBirth?: any | null, id: number, lastName?: string | null, firstName?: string | null, userName?: string | null, avatars?: Array<{ __typename?: 'Avatar', fileSize?: number | null, height?: number | null, url?: string | null, width?: number | null }> | null } }> } };
 
 
 export const GetAllUsersDocument = gql`
@@ -26,6 +26,12 @@ export const GetAllUsersDocument = gql`
     searchTerm: $searchTerm
     statusFilter: $statusFilter
   ) {
+    pagination {
+      page
+      pagesCount
+      pageSize
+      totalCount
+    }
     users {
       profile {
         createdAt
@@ -35,6 +41,7 @@ export const GetAllUsersDocument = gql`
         id
         lastName
         firstName
+        userName
         avatars {
           fileSize
           height

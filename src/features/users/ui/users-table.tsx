@@ -21,15 +21,15 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
         {data?.map((user, idx) => {
           return (
             <Table.Row key={idx}>
-              <Table.DataCell>{user.id}</Table.DataCell>
-              <Table.DataCell>{user.userName}</Table.DataCell>
+              <Table.DataCell>{user.profile.id}</Table.DataCell>
+              <Table.DataCell>{user.profile.userName}</Table.DataCell>
               <Table.DataCell>
-                <Button as={Link} href={`${ROUTES.USER}${user.id}`} variant={'link'}>
-                  {user.userName}
+                <Button as={Link} href={`${ROUTES.USER}${user.profile.id}`} variant={'link'}>
+                  {user.profile.userName}
                 </Button>
               </Table.DataCell>
               <Table.DataCell>
-                {new Date(user.createdAt).toLocaleDateString('ru-RU')}
+                {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
               </Table.DataCell>
             </Table.Row>
           )
