@@ -9,6 +9,15 @@ const nextConfig = {
     localeDetection: false,
     locales: ['en', 'ru'],
   },
-};
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'staging-it-incubator.s3.eu-central-1.amazonaws.com',
+        port: '',
+        protocol: 'https',
+      },
+    ],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
