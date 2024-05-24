@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { styled } from 'styled-components'
+import { Typography } from '@flyingtornado06/ui-kit'
 
 export const UserPageStyled = {
   Avatar: styled(Image)`
@@ -8,7 +9,7 @@ export const UserPageStyled = {
   `,
   Profile: styled.div`
     display: flex;
-    flex-direction: row;
+    align-items: center;
   `,
   ProfileInfo: styled.div`
     display: flex;
@@ -19,7 +20,8 @@ export const UserPageStyled = {
     flex-direction: column;
     margin: 12px;
   `,
-  UserName: styled.div`
-    display: flex;
+  UserName: styled.div``,
+  Label: styled(Typography)`
+    color: var(--color-light-900);
   `,
 }
