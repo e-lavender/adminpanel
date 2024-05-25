@@ -5,7 +5,7 @@ import { Typography } from '@flyingtornado06/ui-kit'
 import { UserPageStyled } from '@/features/user/ui/user-page.styled'
 
 export const UserPage = () => {
-  const { Avatar, Label, Profile, ProfileInfo, UserInfo, UserName } = UserPageStyled
+  const { Avatar, Container, Label, Profile, ProfileInfo, UserInfo, UserName } = UserPageStyled
   const router = useRouter()
   const userId = Number(router.query.id)
   const { data, loading } = useGetUserByIdQuery({
@@ -18,13 +18,13 @@ export const UserPage = () => {
   const avatars = data?.getUser?.profile?.avatars
 
   return (
-    <div>
+    <Container>
       <Profile>
         {avatars && avatars[0]?.url && (
           <Avatar alt={'avatar'} height={60} src={avatars[0].url} width={60} />
         )}
         <UserName>
-          <Typography variant={'h1'}>{data?.getUser?.profile?.firstName}</Typography>
+          <Typography variant={'h1'}>{data?.getUser?.profile?.firstName + ' '}</Typography>
           <Typography variant={'h1'}>{data?.getUser?.profile?.lastName}</Typography>
         </UserName>
       </Profile>
@@ -40,6 +40,6 @@ export const UserPage = () => {
           </Typography>
         </UserInfo>
       </ProfileInfo>
-    </div>
+    </Container>
   )
 }
