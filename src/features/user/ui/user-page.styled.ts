@@ -17,6 +17,10 @@ export const UserPageStyled = {
   Label: styled(Typography)`
     color: var(--color-light-900);
   `,
+  Name: styled.div`
+    display: flex;
+    flex-direction: row;
+  `,
   Profile: styled.div`
     display: flex;
     align-items: center;
@@ -33,5 +37,8 @@ export const UserPageStyled = {
     flex-direction: column;
     justify-content: flex-start;
   `,
-  UserName: styled.div``,
+  UserName: styled.div`
+    display: flex;
+    flex-direction: column;
+  `,
 }
