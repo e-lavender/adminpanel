@@ -8,6 +8,7 @@ export const USER = gql`
         createdAt
         firstName
         lastName
+        userName
         avatars {
           url
           fileSize

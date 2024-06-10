@@ -1,54 +1,35 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
+import * as Types from '../../../shared/appolo-client/Schema.types';
 
-import * as Types from '../../../shared/appolo-client/Schema.types'
-const defaultOptions = {} as const
-
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+const defaultOptions = {} as const;
 export type GetUserByIdQueryVariables = Types.Exact<{
-  userId: Types.Scalars['Int']
-}>
+  userId: Types.Scalars['Int'];
+}>;
 
-export type GetUserByIdQuery = {
-  __typename?: 'Query'
-  getUser: {
-    __typename?: 'User'
-    profile: {
-      __typename?: 'Profile'
-      avatars?: Array<{
-        __typename?: 'Avatar'
-        fileSize?: null | number
-        height?: null | number
-        url?: null | string
-        width?: null | number
-      }> | null
-      createdAt: any
-      dateOfBirth?: any | null
-      firstName?: null | string
-      id: number
-      lastName?: null | string
-    }
-  }
-}
+
+export type GetUserByIdQuery = { __typename?: 'Query', getUser: { __typename?: 'User', profile: { __typename?: 'Profile', id: number, createdAt: any, firstName?: string | null, lastName?: string | null, userName?: string | null, avatars?: Array<{ __typename?: 'Avatar', url?: string | null, fileSize?: number | null, height?: number | null, width?: number | null }> | null } } };
+
 
 export const GetUserByIdDocument = gql`
-  query getUserById($userId: Int!) {
-    getUser(userId: $userId) {
-      profile {
-        id
-        createdAt
-        firstName
-        lastName
-        avatars {
-          url
-          fileSize
-          height
-          width
-        }
-        dateOfBirth
+    query getUserById($userId: Int!) {
+  getUser(userId: $userId) {
+    profile {
+      id
+      createdAt
+      firstName
+      lastName
+      userName
+      avatars {
+        url
+        fileSize
+        height
+        width
       }
     }
   }
-`
+}
+    `;
 
 /**
  * __useGetUserByIdQuery__
@@ -66,23 +47,14 @@ export const GetUserByIdDocument = gql`
  *   },
  * });
  */
-export function useGetUserByIdQuery(
-  baseOptions: Apollo.QueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-
-  return Apollo.useQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options)
-}
-export function useGetUserByIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-
-  return Apollo.useLazyQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(
-    GetUserByIdDocument,
-    options
-  )
-}
-export type GetUserByIdQueryHookResult = ReturnType<typeof useGetUserByIdQuery>
-export type GetUserByIdLazyQueryHookResult = ReturnType<typeof useGetUserByIdLazyQuery>
-export type GetUserByIdQueryResult = Apollo.QueryResult<GetUserByIdQuery, GetUserByIdQueryVariables>
+export function useGetUserByIdQuery(baseOptions: Apollo.QueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
+      }
+export function useGetUserByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUserByIdQuery, GetUserByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetUserByIdQuery, GetUserByIdQueryVariables>(GetUserByIdDocument, options);
+        }
+export type GetUserByIdQueryHookResult = ReturnType<typeof useGetUserByIdQuery>;
+export type GetUserByIdLazyQueryHookResult = ReturnType<typeof useGetUserByIdLazyQuery>;
+export type GetUserByIdQueryResult = Apollo.QueryResult<GetUserByIdQuery, GetUserByIdQueryVariables>;
