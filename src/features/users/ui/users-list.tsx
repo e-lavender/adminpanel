@@ -7,7 +7,7 @@ import {
   useGetAllUsersQuery,
 } from '@/features/users/api/users-list.api.types'
 import { FILTER_OPTIONS, USERS_TABLE_COLUMNS } from '@/features/users/constants'
-import { UserListStyled } from '@/features/users/ui/user-list.styled'
+import { UsersListStyled } from '@/features/users/ui/users-list.styled'
 import { UsersTable } from '@/features/users/ui/users-table'
 import { SortDirection, UserBlockStatus } from '@/shared/appolo-client/Schema.types'
 import { client } from '@/shared/appolo-client/appolo-client'
@@ -16,7 +16,7 @@ import { Pagination } from '@/ui/common/pagination'
 import { Loader, Select, TextField } from '@flyingtornado06/ui-kit'
 
 export const UsersList = () => {
-  const { Container, Filters, Table } = UserListStyled
+  const { Container, Filters, Table } = UsersListStyled
   const [totalPages, setTotalPages] = useState<number>(0)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(10)

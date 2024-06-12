@@ -21,7 +21,7 @@ export const SidebarMenuLayout = ({ children }: PropsWithChildren<SidebarMenuLay
     if (token) {
       setIsAuthed(true)
     }
-  }, [])
+  }, [isAuthed])
 
   return (
     <>
