@@ -1,7 +1,10 @@
+import { TabsItem } from '@flyingtornado06/ui-kit'
 import { styled } from 'styled-components'
 
 export const ProfileTabsStyled = {
-  Container: styled.div`
-    cursor: pointer;
+  TabsItemStyled: styled(TabsItem)`
+    &:hover {
+      background-color: transparent;
+    }
   `,
 }

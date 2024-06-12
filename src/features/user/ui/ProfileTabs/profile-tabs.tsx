@@ -1,30 +1,23 @@
 import { ProfileTabsStyled } from '@/features/user/ui/ProfileTabs/profile-tabs.styled'
-import { Typography } from '@flyingtornado06/ui-kit'
+import { TABS_OPTIONS } from '@/features/user/ui/ProfileTabs/tabsOptions'
+import { TabsContainer, TabsItem, TabsList } from '@flyingtornado06/ui-kit'
+import { useRouter } from 'next/router'
 
 export const ProfileTabs = () => {
-  const { Container } = ProfileTabsStyled
+  const { pathname, push } = useRouter()
+  const { TabsItemStyled } = ProfileTabsStyled
 
-  const tabsOptions = [
-    {
-      description: 'Uploaded photos',
-      disabled: false,
-      id: 1,
-      value: 'Uploaded photos',
-    },
-    { description: 'Payments', disabled: false, id: 2, value: 'Payments' },
-    {
-      description: 'Followers',
-      disabled: false,
-      id: 3,
-      value: 'Followers',
-    },
-    {
-      description: 'Following',
-      disabled: false,
-      id: 4,
-      value: 'Following',
-    },
-  ]
+  const options = TABS_OPTIONS.map(option => {
+    return (
+      <TabsItem key={option.id} value={option.url}>
+        {option.description}
+      </TabsItem>
+    )
+  })
 
-  return <Container></Container>
+  return (
+    <TabsContainer defaultValue={pathname} onValueChange={route => push(route)}>
+      <TabsList fullWidth>{options}</TabsList>
+    </TabsContainer>
+  )
 }
