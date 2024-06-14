@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.9.11
     version: 3.10.1(@types/react@18.2.74)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
   '@flyingtornado06/ui-kit':
-    specifier: ^0.0.15
-    version: 0.0.15(@types/react-dom@18.2.24)(@types/react@18.2.74)
+    specifier: ^0.0.22
+    version: 0.0.22(@types/react-dom@18.2.24)(@types/react@18.2.74)
   '@hookform/resolvers':
     specifier: ^3.4.0
     version: 3.4.0(react-hook-form@7.51.4)
@@ -854,8 +854,8 @@ packages:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
     dev: false
 
-  /@flyingtornado06/ui-kit@0.0.15(@types/react-dom@18.2.24)(@types/react@18.2.74):
-    resolution: {integrity: sha512-9dAY237XVbLPrxA2O8QL8GRicF1zCsEkTA7ZC1bBnl+fncjDZMIr0c0mtNH+zCol0AD0yv5MovFUKJ7xIAOuPw==}
+  /@flyingtornado06/ui-kit@0.0.22(@types/react-dom@18.2.24)(@types/react@18.2.74):
+    resolution: {integrity: sha512-S1QamCOIWxG9WhWKyZFfHkHs4vCsil5VL1tBts+s5ll/Z14i9GRSifjxrfLuCqyEnxoHti5Aw5CRO7SX6kv2vA==}
     dependencies:
       '@radix-ui/react-avatar': 1.0.4(@types/react-dom@18.2.24)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-checkbox': 1.0.4(@types/react-dom@18.2.24)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)

@@ -9,9 +9,9 @@ export const ProfileTabs = () => {
 
   const options = TABS_OPTIONS.map(option => {
     return (
-      <TabsItem key={option.id} value={option.url}>
+      <TabsItemStyled key={option.id} value={option.url}>
         {option.description}
-      </TabsItem>
+      </TabsItemStyled>
     )
   })
 
