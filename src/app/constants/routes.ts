@@ -7,5 +7,5 @@ export const ROUTES = {
   //STATISTICS: '/admin/statistics',
   USER: 'user/',
   //USER_PROFILE: `${appSettings.DOMAIN_URL}profile/user-profile`,
-  //USERS: '/admin/users',
+  USERS: '/users',
 } as const
