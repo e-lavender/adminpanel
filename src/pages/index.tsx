@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import { ROUTES } from '@/app/constants/routes'
 import { Loader } from '@flyingtornado06/ui-kit'
 import { useRouter } from 'next/router'
 
@@ -30,31 +31,9 @@ const Home = () => {
         <Loader isLoading={loading} />
       </div>
     )
+  } else {
+    void push(ROUTES.USERS)
   }
-
-  return (
-    <>main page</>
-    // me && (
-    //   <>
-    //     {posts?.items?.map((item, index) => {
-    //       const filteredImages = item.images.filter(image => image.imageSize === IMAGE_SIZE.MEDIUM)
-    //
-    //       return (
-    //         <div key={item.id}>
-    //           <PostCard
-    //             avatarOwner={item.avatarOwner}
-    //             createdAt={item.createdAt}
-    //             description={item.description}
-    //             id={item.id}
-    //             images={filteredImages}
-    //             //comments={POST_COMMENTS?.comments}
-    //             ownerId={item.ownerId}
-    //             userName={item.userName}
-    //           />
-    //         </div>
-    //       )
-    //     })}
-  )
 }
 
 export default Home

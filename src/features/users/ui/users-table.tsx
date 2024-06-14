@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ROUTES } from '@/app/constants/routes'
+import { UsersTableStyles } from '@/features/users/ui/users-table.styled'
 import { User } from '@/shared/appolo-client/Schema.types'
 import { Table } from '@/ui/common/table'
 import { TableHeaderModel } from '@/ui/common/table/tabel-types'
@@ -8,19 +9,21 @@ import { Button } from '@flyingtornado06/ui-kit'
 import Link from 'next/link'
 
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
+  const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
+
   return (
-    <Table.Root>
-      <Table.Head>
-        <Table.Row>
+    <TableRoot>
+      <TableHead>
+        <TableRow>
           {columns.map(column => {
-            return <Table.HeadCell key={column.key}>{column.title}</Table.HeadCell>
+            return <TableHeadCell key={column.key}>{column.title}</TableHeadCell>
           })}
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
+        </TableRow>
+      </TableHead>
+      <TableBody>
         {data?.map((user, idx) => {
           return (
-            <Table.Row key={idx}>
+            <TableRow key={idx}>
               <Table.DataCell>{user.profile.id}</Table.DataCell>
               <Table.DataCell>{user.profile.userName}</Table.DataCell>
               <Table.DataCell>
@@ -31,11 +34,11 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
               <Table.DataCell>
                 {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
               </Table.DataCell>
-            </Table.Row>
+            </TableRow>
           )
         })}
-      </Table.Body>
-    </Table.Root>
+      </TableBody>
+    </TableRoot>
   )
 }
 

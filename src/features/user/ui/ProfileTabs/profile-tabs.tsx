@@ -7,17 +7,17 @@ export const ProfileTabs = () => {
   const { pathname, push } = useRouter()
   const { TabsItemStyled } = ProfileTabsStyled
 
-  const options = TABS_OPTIONS.map(option => {
-    return (
-      <TabsItemStyled key={option.id} value={option.url}>
-        {option.description}
-      </TabsItemStyled>
-    )
-  })
-
   return (
     <TabsContainer defaultValue={pathname} onValueChange={route => push(route)}>
-      <TabsList fullWidth>{options}</TabsList>
+      <TabsList fullWidth>
+        {TABS_OPTIONS.map(option => {
+          return (
+            <TabsItemStyled key={option.id} value={option.url}>
+              {option.description}
+            </TabsItemStyled>
+          )
+        })}
+      </TabsList>
     </TabsContainer>
   )
 }
