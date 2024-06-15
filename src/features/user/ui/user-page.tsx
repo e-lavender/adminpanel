@@ -3,7 +3,6 @@ import { BackToPrevious } from '@/features/user/ui/BackToPrevious/back-to-previo
 import { UserPageStyled } from '@/features/user/ui/user-page.styled'
 import { Typography } from '@flyingtornado06/ui-kit'
 import { useRouter } from 'next/router'
-import { ProfileTabs } from '@/features/user/ui/ProfileTabs/profile-tabs'
 
 export const UserPage = () => {
   const { Avatar, Container, Label, Name, Profile, ProfileInfo, UserInfo, UserName } =
@@ -48,7 +47,6 @@ export const UserPage = () => {
           </UserInfo>
         </ProfileInfo>
       </Container>
-      <ProfileTabs />
     </>
   )
 }

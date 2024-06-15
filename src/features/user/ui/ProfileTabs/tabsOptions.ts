@@ -1,21 +1,27 @@
+type IdType = string | string[] | undefined
 export const TABS_OPTIONS = [
   {
     description: 'Uploaded photos',
     disabled: false,
     id: 1,
-    url: '/uploadedPhotos',
+    url: (id: IdType) => `/user/${id}/uploadedPhotos`,
   },
-  { description: 'Payments', disabled: false, id: 2, url: '/payments' },
+  {
+    description: 'Payments',
+    disabled: false,
+    id: 2,
+    url: (id: IdType) => `/user/${id}/payments`,
+  },
   {
     description: 'Followers',
     disabled: false,
     id: 3,
-    url: '/followers',
+    url: (id: IdType) => `/user/${id}/followers`,
   },
   {
     description: 'Following',
     disabled: false,
     id: 4,
-    url: '/following',
+    url: (id: IdType) => `/user/${id}/following`,
   },
 ]
