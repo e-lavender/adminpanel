@@ -1,16 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
-import { USERS } from '@/features/users/api/users-list.api'
-import {
-  GetAllUsersDocument,
-  GetAllUsersQuery,
-  useGetAllUsersQuery,
-} from '@/features/users/api/users-list.api.types'
+import { useGetAllUsersQuery } from '@/features/users/api/users-list.api.types'
 import { FILTER_OPTIONS, USERS_TABLE_COLUMNS } from '@/features/users/constants'
 import { UsersListStyled } from '@/features/users/ui/users-list.styled'
 import { UsersTable } from '@/features/users/ui/users-table'
 import { SortDirection, UserBlockStatus } from '@/shared/appolo-client/Schema.types'
-import { client } from '@/shared/appolo-client/appolo-client'
 import useDebounce from '@/shared/hooks/useDebounce'
 import { Pagination } from '@/ui/common/pagination'
 import { Loader, Select, TextField } from '@flyingtornado06/ui-kit'
