@@ -1,9 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { SIGN_IN_ADMIN } from '@/features/auth/login/api/signIn.api'
-import { LoginAdmin, MutationLoginAdminArgs } from '@/shared/appolo-client/Schema.types'
 import { saveAuthToken } from '@/utils'
-import { useMutation } from '@apollo/client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
 import { z } from 'zod'
@@ -15,16 +12,22 @@ export const useSignInForm = () => {
   })
 
   type LoginFormType = z.infer<typeof loginFormSchema>
-  type LoginAdminMutation = {
-    __typename?: 'Mutation'
-    loginAdmin: LoginAdmin
-  }
-  const [signIn] = useMutation<LoginAdminMutation, MutationLoginAdminArgs>(SIGN_IN_ADMIN, {})
+
   const { push } = useRouter()
   const onSignIn = async (data: LoginFormType) => {
-    const { data: res } = await signIn({ variables: data })
+    const response = await fetch('/api/sign-in', {
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
 
-    if (res?.loginAdmin.logged) {
+    const {
+      data: { loginAdmin },
+    } = await response.json()
+
+    if (loginAdmin.logged) {
       saveAuthToken(data)
       await push('/')
     }

@@ -4,9 +4,7 @@ import { SidebarMenuWithItems } from '@/ui/common/sidebar-menu-with-items/sideba
 import { HeaderLayout } from '@/ui/templates/layouts/header-layout'
 import { SidebarMenuLayoutStyled } from '@/ui/templates/layouts/sidebar-menu-layout/sidebar-menu-layout.styled'
 
-type SidebarMenuLayoutProps = {
-  isAuthed?: boolean
-}
+type SidebarMenuLayoutProps = {}
 
 export const SidebarMenuLayout = ({ children }: PropsWithChildren<SidebarMenuLayoutProps>) => {
   const { Container, Wrapper } = SidebarMenuLayoutStyled
