@@ -2,7 +2,7 @@ import { Typography } from '@flyingtornado06/ui-kit'
 import Image from 'next/image'
 import { styled } from 'styled-components'
 
-export const UserPageStyled = {
+export const UserInfoStyled = {
   Avatar: styled(Image)`
     //margin: 24px;
     border-radius: 50%;

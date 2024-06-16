@@ -6,15 +6,22 @@ import { useRouter } from 'next/router'
 export const ProfileTabs = () => {
   const router = useRouter()
   const { TabsItemStyled } = ProfileTabsStyled
+  const id = router.query.id && router.query.id[0]
+  const currentUrl = router.query.id && router.query.id[1]
 
   return (
-    <TabsContainer defaultValue={router.pathname} onValueChange={route => router.push(route)}>
+    <TabsContainer
+      defaultValue={`/user/${id}/uploadedPhotos`}
+      onValueChange={route => router.push(route)}
+    >
       <TabsList fullWidth>
         {TABS_OPTIONS.map(option => {
           return (
             <TabsItemStyled
+              data-state={currentUrl === option.name ? 'active' : 'inactive'}
+              disabled={option.disabled}
               key={option.id}
-              value={option.url(router.query.id && router.query.id[0])}
+              value={option.url(id)}
             >
               {option.description}
             </TabsItemStyled>
