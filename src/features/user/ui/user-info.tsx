@@ -1,14 +1,14 @@
 import { useGetUserByIdQuery } from '@/features/user/api/user-page.api.types'
 import { BackToPrevious } from '@/features/user/ui/BackToPrevious/back-to-previous'
-import { UserPageStyled } from '@/features/user/ui/user-page.styled'
+import { UserInfoStyled } from '@/features/user/ui/user-info.styled'
 import { Typography } from '@flyingtornado06/ui-kit'
 import { useRouter } from 'next/router'
 
-export const UserPage = () => {
+export const UserInfo = () => {
   const { Avatar, Container, Label, Name, Profile, ProfileInfo, UserInfo, UserName } =
-    UserPageStyled
+    UserInfoStyled
   const router = useRouter()
-  const userId = Number(router.query.id)
+  const userId = Number(router.query.id && router.query.id[0])
   const { data, loading } = useGetUserByIdQuery({
     skip: !router.query.id,
     variables: {

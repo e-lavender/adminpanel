@@ -1,12 +1,11 @@
-import React, { ReactElement, useState } from 'react'
+import React, { useState } from 'react'
 
 import { ProfileTabs } from '@/features/user/ui/ProfileTabs/profile-tabs'
-import { UserPage } from '@/features/user/ui/user-page'
+import { UserInfo } from '@/features/user/ui/user-info'
 import Followers from '@/pages/user/followers'
 import Following from '@/pages/user/following'
 import Payments from '@/pages/user/payments'
 import UploadedPhotos from '@/pages/user/uploaded-photos'
-import UserProfileLayout from '@/ui/templates/layouts/user-profile-layout/user-profile-layout'
 import { useRouter } from 'next/router'
 
 const renderItem: Record<string, any> = {
@@ -16,17 +15,17 @@ const renderItem: Record<string, any> = {
   uploadedPhotos: UploadedPhotos,
 }
 
-const User = () => {
+const UserPage = () => {
   const router = useRouter()
   const tab = router.query.id && router.query.id[1]
 
   return (
     <div>
-      <UserPage />
+      <UserInfo />
       <ProfileTabs />
-      <div>{tab && renderItem[tab]()}</div>
+      <div>{renderItem[tab || 'uploadedPhotos']()}</div>
     </div>
   )
 }
 
-export default User
+export default UserPage
