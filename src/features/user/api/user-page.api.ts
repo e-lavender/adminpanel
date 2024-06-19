@@ -19,3 +19,20 @@ export const USER = gql`
     }
   }
 `
+export const POSTS_BY_USER = gql`
+  query getAllPostsByUser($userId: Int!, $endCursorId: Int) {
+    getPostsByUser(userId: $userId, endCursorId: $endCursorId) {
+      totalCount
+      pageSize
+      pagesCount
+      items {
+        id
+        createdAt
+        url
+        width
+        height
+        fileSize
+      }
+    }
+  }
+`
