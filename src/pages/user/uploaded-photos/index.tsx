@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 
-import UserProfileLayout from '@/ui/templates/layouts/user-profile-layout/user-profile-layout'
+import PhotosList from '@/features/user/ui/photos-list'
 
 const UploadedPhotos = () => {
-  return <div>{'UploadedPhotos'}</div>
+  return <PhotosList />
 }
 
 export default UploadedPhotos

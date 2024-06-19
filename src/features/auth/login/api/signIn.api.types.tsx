@@ -1,30 +1,25 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
+import * as Types from '../../../../shared/appolo-client/Schema.types';
 
-import * as Types from '../../../../shared/appolo-client/Schema.types'
-const defaultOptions = {} as const
-
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+const defaultOptions = {} as const;
 export type LoginAdminMutationVariables = Types.Exact<{
-  email: Types.Scalars['String']
-  password: Types.Scalars['String']
-}>
+  email: Types.Scalars['String'];
+  password: Types.Scalars['String'];
+}>;
 
-export type LoginAdminMutation = {
-  __typename?: 'Mutation'
-  loginAdmin: { __typename?: 'LoginAdmin'; logged: boolean }
-}
+
+export type LoginAdminMutation = { __typename?: 'Mutation', loginAdmin: { __typename?: 'LoginAdmin', logged: boolean } };
+
 
 export const LoginAdminDocument = gql`
-  mutation loginAdmin($email: String!, $password: String!) {
-    loginAdmin(email: $email, password: $password) {
-      logged
-    }
+    mutation loginAdmin($email: String!, $password: String!) {
+  loginAdmin(email: $email, password: $password) {
+    logged
   }
-`
-export type LoginAdminMutationFn = Apollo.MutationFunction<
-  LoginAdminMutation,
-  LoginAdminMutationVariables
->
+}
+    `;
+export type LoginAdminMutationFn = Apollo.MutationFunction<LoginAdminMutation, LoginAdminMutationVariables>;
 
 /**
  * __useLoginAdminMutation__
@@ -44,19 +39,10 @@ export type LoginAdminMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useLoginAdminMutation(
-  baseOptions?: Apollo.MutationHookOptions<LoginAdminMutation, LoginAdminMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-
-  return Apollo.useMutation<LoginAdminMutation, LoginAdminMutationVariables>(
-    LoginAdminDocument,
-    options
-  )
-}
-export type LoginAdminMutationHookResult = ReturnType<typeof useLoginAdminMutation>
-export type LoginAdminMutationResult = Apollo.MutationResult<LoginAdminMutation>
-export type LoginAdminMutationOptions = Apollo.BaseMutationOptions<
-  LoginAdminMutation,
-  LoginAdminMutationVariables
->
+export function useLoginAdminMutation(baseOptions?: Apollo.MutationHookOptions<LoginAdminMutation, LoginAdminMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LoginAdminMutation, LoginAdminMutationVariables>(LoginAdminDocument, options);
+      }
+export type LoginAdminMutationHookResult = ReturnType<typeof useLoginAdminMutation>;
+export type LoginAdminMutationResult = Apollo.MutationResult<LoginAdminMutation>;
+export type LoginAdminMutationOptions = Apollo.BaseMutationOptions<LoginAdminMutation, LoginAdminMutationVariables>;
