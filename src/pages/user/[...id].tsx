@@ -23,7 +23,7 @@ const UserPage = () => {
     <div>
       <UserInfo />
       <ProfileTabs />
-      <UploadedPhotos />
+      {/*<UploadedPhotos />*/}
       <div>{renderItem[tab || 'uploadedPhotos']()}</div>
     </div>
   )
