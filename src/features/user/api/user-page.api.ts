@@ -36,3 +36,32 @@ export const POSTS_BY_USER = gql`
     }
   }
 `
+export const PAYMENTS = gql`
+  query getPaymentsById(
+    $userId: Int!
+    $pageSize: Int = 10
+    $pageNumber: Int = 1
+    $sortBy: String = "createdAt"
+    $sortDirection: SortDirection = desc
+  ) {
+    getPaymentsByUser(
+      userId: $userId
+      pageSize: $pageSize
+      pageNumber: $pageNumber
+      sortBy: $sortBy
+      sortDirection: $sortDirection
+    ) {
+      items {
+        dateOfPayment
+        endDate
+        price
+        paymentType
+        type
+      }
+      page
+      pagesCount
+      pageSize
+      totalCount
+    }
+  }
+`
