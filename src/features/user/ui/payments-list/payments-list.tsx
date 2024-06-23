@@ -18,15 +18,15 @@ export const PaymentsList = () => {
     skip: !userId,
     variables: {
       pageNumber,
-      userId,
       pageSize,
       sortBy: 'createdAt',
       sortDirection: SortDirection.Asc,
+      userId,
     },
   })
 
   // @ts-ignore
-  const table = <UsersTable columns={PAYMENTS_TABLE_COLUMNS} data={''} />
+  const table = <UsersTable columns={PAYMENTS_TABLE_COLUMNS} data={data?.getPaymentsByUser.items} />
 
   return <Table>{table}</Table>
 }
