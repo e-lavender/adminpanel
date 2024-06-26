@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
+import { useGetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
 import { PAYMENTS_TABLE_COLUMNS } from '@/features/user/constants'
 import { PaymentsListStyled } from '@/features/user/ui/payments-list/payments-list.styled'
 import { UsersTable } from '@/features/users/ui/users-table'
 import { SortDirection } from '@/shared/appolo-client/Schema.types'
-import { useGetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
 import { useRouter } from 'next/router'
+import { PaymentsTable } from '@/features/user/ui/payments-list/payments-table'
 
 export const PaymentsList = () => {
   const [pageNumber, setPageNumber] = useState<number>(1)
@@ -26,7 +27,11 @@ export const PaymentsList = () => {
   })
 
   // @ts-ignore
-  const table = <UsersTable columns={PAYMENTS_TABLE_COLUMNS} data={data?.getPaymentsByUser.items} />
+  const table = (
+    <PaymentsTable columns={PAYMENTS_TABLE_COLUMNS} data={data?.getPaymentsByUser.items} />
+  )
+
+  console.log(data)
 
   return <Table>{table}</Table>
 }
