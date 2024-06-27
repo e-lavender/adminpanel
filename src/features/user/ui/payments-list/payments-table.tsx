@@ -1,10 +1,9 @@
 import React from 'react'
 
+import { GetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
+import { PaymentsTableStyles } from '@/features/user/ui/payments-list/payments-table.styled'
 import { Table } from '@/ui/common/table'
 import { TableHeaderModel } from '@/ui/common/table/tabel-types'
-
-import { PaymentsTableStyles } from '@/features/user/ui/payments-list/payments-table.styled'
-import { GetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
 
 export const PaymentsTable = ({
   columns,
@@ -14,6 +13,7 @@ export const PaymentsTable = ({
   data: GetPaymentsByIdQuery | undefined
 }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = PaymentsTableStyles
+
   return (
     <TableRoot>
       <TableHead>
