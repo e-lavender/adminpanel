@@ -1,22 +1,19 @@
 import React from 'react'
 
-import { ROUTES } from '@/app/constants/routes'
-import { UsersTableStyles } from '@/features/users/ui/users-table.styled'
-import { User } from '@/shared/appolo-client/Schema.types'
 import { Table } from '@/ui/common/table'
 import { TableHeaderModel } from '@/ui/common/table/tabel-types'
-import { Button } from '@flyingtornado06/ui-kit'
-import Link from 'next/link'
+
+import { PaymentsTableStyles } from '@/features/user/ui/payments-list/payments-table.styled'
+import { GetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
 
 export const PaymentsTable = ({
   columns,
   data,
 }: {
   columns: TableHeaderModel[]
-  data: Payments[]
+  data: GetPaymentsByIdQuery | undefined
 }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = PaymentsTableStyles
-
   return (
     <TableRoot>
       <TableHead>
@@ -27,15 +24,14 @@ export const PaymentsTable = ({
         </TableRow>
       </TableHead>
       <TableBody>
-        {data?.getPaymentsByUser.items.map((item, idx) => {
+        {data?.getPaymentsByUser?.items.map((item, idx) => {
           return (
             <TableRow key={idx}>
-              <Table.DataCell>{user.profile.id}</Table.DataCell>
-              <Table.DataCell>{user.profile.userName}</Table.DataCell>
-
-              <Table.DataCell>
-                {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
-              </Table.DataCell>
+              <Table.DataCell>{item.dateOfPayment}</Table.DataCell>
+              <Table.DataCell>{item.endDate}</Table.DataCell>
+              <Table.DataCell>{item.price}</Table.DataCell>
+              <Table.DataCell>{item.type}</Table.DataCell>
+              <Table.DataCell>{item.paymentType}</Table.DataCell>
             </TableRow>
           )
         })}
