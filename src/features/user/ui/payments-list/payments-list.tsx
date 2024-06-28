@@ -7,6 +7,7 @@ import { UsersTable } from '@/features/users/ui/users-table'
 import { SortDirection } from '@/shared/appolo-client/Schema.types'
 import { useRouter } from 'next/router'
 import { PaymentsTable } from '@/features/user/ui/payments-list/payments-table'
+import { Pagination } from '@/ui/common/pagination'
 
 export const PaymentsList = () => {
   const [pageNumber, setPageNumber] = useState<number>(1)
@@ -31,5 +32,21 @@ export const PaymentsList = () => {
 
   console.log(data)
 
-  return <Table>{table}</Table>
+  return (
+    <>
+      <Table>{table}</Table>
+      <Pagination
+        currentPage={currentPage}
+        onPageChange={page => {
+          setCurrentPage(page)
+        }}
+        onPageSizeChange={pageSize => {
+          setPageSize(+pageSize)
+        }}
+        pageSize={pageSize}
+        siblingCount={3}
+        totalCount={totalPages}
+      />
+    </>
+  )
 }
