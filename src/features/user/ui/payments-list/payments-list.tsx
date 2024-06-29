@@ -4,7 +4,6 @@ import { useGetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types
 import { PAYMENTS_TABLE_COLUMNS } from '@/features/user/constants'
 import { PaymentsListStyled } from '@/features/user/ui/payments-list/payments-list.styled'
 import { PaymentsTable } from '@/features/user/ui/payments-list/payments-table'
-import { UsersTable } from '@/features/users/ui/users-table'
 import { SortDirection } from '@/shared/appolo-client/Schema.types'
 import { Pagination } from '@/ui/common/pagination'
 import { useRouter } from 'next/router'
