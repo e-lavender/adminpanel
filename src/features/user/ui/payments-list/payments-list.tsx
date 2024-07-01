@@ -31,8 +31,6 @@ export const PaymentsList = () => {
   // @ts-ignore
   const table = <PaymentsTable columns={PAYMENTS_TABLE_COLUMNS} data={data} />
 
-  console.log(data)
-
   return (
     <>
       <Table>{table}</Table>
