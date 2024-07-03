@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useGetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
 import { PAYMENTS_TABLE_COLUMNS } from '@/features/user/constants'
@@ -12,7 +12,7 @@ export const PaymentsList = () => {
   const [pageNumber, setPageNumber] = useState<number>(1)
   const [pageSize, setPageSize] = useState<number>(5)
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [totalPages, setTotalPages] = useState<number>(2)
+  const [totalPages, setTotalPages] = useState<number>(0)
 
   const { Table } = PaymentsListStyled
   const { query } = useRouter()
@@ -27,6 +27,10 @@ export const PaymentsList = () => {
       userId,
     },
   })
+
+  useEffect(() => {
+    data?.getPaymentsByUser.totalCount && setTotalPages(data?.getPaymentsByUser.totalCount)
+  }, [data?.getPaymentsByUser.totalCount])
 
   // @ts-ignore
   const table = <PaymentsTable columns={PAYMENTS_TABLE_COLUMNS} data={data} />
