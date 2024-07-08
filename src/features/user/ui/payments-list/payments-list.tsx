@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useGetPaymentsByIdQuery } from '@/features/user/api/user-page.api.types'
 import { PAYMENTS_TABLE_COLUMNS } from '@/features/user/constants'
@@ -20,13 +20,17 @@ export const PaymentsList = () => {
   const { data, loading } = useGetPaymentsByIdQuery({
     skip: !userId,
     variables: {
-      pageNumber,
+      pageNumber: currentPage,
       pageSize,
       sortBy: 'createdAt',
       sortDirection: SortDirection.Asc,
       userId,
     },
   })
+
+  useEffect(() => {
+    data?.getPaymentsByUser.totalCount && setTotalPages(data?.getPaymentsByUser.totalCount)
+  }, [data?.getPaymentsByUser.totalCount])
 
   // @ts-ignore
   const table = <PaymentsTable columns={PAYMENTS_TABLE_COLUMNS} data={data} />
