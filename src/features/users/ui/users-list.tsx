@@ -48,7 +48,7 @@ export const UsersList = () => {
   useEffect(() => {
     data?.getUsers.pagination.totalCount && setTotalPages(data?.getUsers.pagination.totalCount)
   }, [data?.getUsers.pagination.totalCount])
-  console.log(data)
+
   return (
     <Container>
       <Filters>

@@ -20,7 +20,7 @@ export const PaymentsList = () => {
   const { data, loading } = useGetPaymentsByIdQuery({
     skip: !userId,
     variables: {
-      pageNumber,
+      pageNumber: currentPage,
       pageSize,
       sortBy: 'createdAt',
       sortDirection: SortDirection.Asc,
