@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 
 export const PaymentsList = () => {
   const [pageNumber, setPageNumber] = useState<number>(1)
-  const [pageSize, setPageSize] = useState<number>(5)
+  const [pageSize, setPageSize] = useState<number>(10)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(0)
 
