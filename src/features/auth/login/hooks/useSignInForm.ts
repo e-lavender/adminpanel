@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form'
 
+import { appSettings } from '@/app/settings'
+import { useAuth } from '@/ui/templates/layouts/auth-context-layout/auth-context-layout'
 import { saveAuthToken } from '@/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
@@ -10,6 +12,7 @@ export const useSignInForm = () => {
     email: z.string().email(),
     password: z.string(),
   })
+  const { logIn } = useAuth()
 
   type LoginFormType = z.infer<typeof loginFormSchema>
 
@@ -29,13 +32,14 @@ export const useSignInForm = () => {
 
     if (loginAdmin.logged) {
       saveAuthToken(data)
+      logIn()
       await push('/')
     }
   }
   const { control, handleSubmit } = useForm<LoginFormType>({
     defaultValues: {
-      email: 'admin@gmail.com',
-      password: 'admin',
+      email: appSettings.AUTH_LOGIN,
+      password: appSettings.AUTH_PASS,
     },
     mode: 'onBlur',
     resolver: zodResolver(loginFormSchema),
