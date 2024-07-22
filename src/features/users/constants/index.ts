@@ -22,6 +22,11 @@ export const USERS_TABLE_COLUMNS: TableHeaderModel[] = [
     sortable: true,
     title: 'Date Added',
   },
+  {
+    key: 'dots',
+    sortable: false,
+    title: '',
+  },
 ]
 
 export const FILTER_OPTIONS = [
