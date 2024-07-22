@@ -7,6 +7,7 @@ import { Table } from '@/ui/common/table'
 import { TableHeaderModel } from '@/ui/common/table/tabel-types'
 import { Button } from '@flyingtornado06/ui-kit'
 import Link from 'next/link'
+import { DotsIcon } from '@/assets/icons/dots-icon'
 
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
@@ -33,6 +34,11 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
               </Table.DataCell>
               <Table.DataCell>
                 {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
+              </Table.DataCell>
+              <Table.DataCell>
+                <Button>
+                  <DotsIcon />
+                </Button>
               </Table.DataCell>
             </TableRow>
           )
