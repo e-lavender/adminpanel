@@ -1,4 +1,5 @@
 import { Table } from '@/ui/common/table/table'
+import { DotsIcon } from '@/assets/icons/dots-icon'
 import { styled } from 'styled-components'
 
 export const UsersTableStyles = {
@@ -40,6 +41,12 @@ export const UsersTableStyles = {
       line-height: 24px;
       color: var(--text-color-primary);
       vertical-align: middle;
+    }
+  `,
+  TableDots: styled(DotsIcon)`
+    color: var(--color-light-100);
+    &:hover {
+      color: var(--color-accent-500);
     }
   `,
 }

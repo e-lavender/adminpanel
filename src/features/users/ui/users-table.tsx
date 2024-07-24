@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { DotsIcon } from '@/assets/icons/dots-icon'
 
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
-  const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
+  const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow, TableDots } = UsersTableStyles
 
   return (
     <TableRoot>
@@ -36,8 +36,8 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
                 {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
               </Table.DataCell>
               <Table.DataCell>
-                <Button>
-                  <DotsIcon />
+                <Button variant={'link'}>
+                  <TableDots />
                 </Button>
               </Table.DataCell>
             </TableRow>
