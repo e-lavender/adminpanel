@@ -6,6 +6,12 @@ export const UsersTableStyles = {
   TableBody: styled(Table.Body)`
     border: 1px solid var(--color-dark-500);
   `,
+  TableDots: styled(DotsIcon)`
+    color: var(--color-light-100);
+    &:hover {
+      color: var(--color-accent-500);
+    }
+  `,
   TableHead: styled(Table.Head)`
     background-color: var(--color-dark-500);
   `,
