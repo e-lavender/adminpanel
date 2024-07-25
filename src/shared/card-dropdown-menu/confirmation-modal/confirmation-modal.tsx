@@ -1,8 +1,7 @@
-import { useTranslation } from '@/app'
 import { Button, Modal, Typography } from '@flyingtornado06/ui-kit'
-import { clsx } from 'clsx'
 
-import s from './confirmation-modal.module.scss'
+import { ConfirmationModalStyled } from './confirmation-modal.styled'
+import { useTranslation } from '@/shared/hooks/useTranslation'
 
 type ModalProps = {
   btnsStyle?: string
@@ -30,6 +29,7 @@ export const ConfirmationModal = ({
     onConfirmation()
     onClose()
   }
+  const { Content, Buttons } = ConfirmationModalStyled
 
   const { t } = useTranslation()
 
@@ -46,20 +46,16 @@ export const ConfirmationModal = ({
   return (
     <Modal onChange={onClose} open={isOpen}>
       <Modal.Button asChild />
-      <Modal.Content
-        className={clsx(s.content, isOpen && s.visible)}
-        onInteractOutside={e => e.preventDefault()}
-        title={title || translatedTitle}
-      >
+      <Content onInteractOutside={e => e.preventDefault()} title={title || translatedTitle}>
         <Typography variant={'regular-16'}>{message || translatedMessage}</Typography>
 
-        <div className={clsx(s.btns, btnsStyle)}>
+        <Buttons>
           <Button onClick={onConfirm} variant={'outlined'}>
             {confirmBtnLabel || yes}
           </Button>
           <Button onClick={onClose}>{declineBtnLabel || no} </Button>
-        </div>
-      </Modal.Content>
+        </Buttons>
+      </Content>
     </Modal>
   )
 }

@@ -14,7 +14,7 @@ export const CardDropdownMenu = ({ id }: DropDownMenuType) => {
   const { changePostCardModalMode, clearPostCardModal, closePostCardModal, selectedPost } =
     usePostCardModal()
 
-  const deletePost = () => {
+  const deleteUser = () => {
     const postImagesUploadIds = selectedPost.images.map(image => image.uploadId)
 
     deleteSelectedPost({ postId: selectedPost.id })
@@ -44,8 +44,8 @@ export const CardDropdownMenu = ({ id }: DropDownMenuType) => {
       <ConfirmationModal
         isOpen={isModalOpened}
         onClose={closeModal}
-        onConfirmation={deletePost}
-        translation={'deletePost'}
+        onConfirmation={deleteUser}
+        translation={'deleteUser'}
       />
     </>
   )

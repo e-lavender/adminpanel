@@ -1,8 +1,9 @@
 import { LocaleType } from '@/shared/locales/ru'
-import { AuthTextModel, HeaderTextModel } from '@/shared/locales/text-models'
+import { AuthTextModel, ConfirmationTextModel, HeaderTextModel } from '@/shared/locales/text-models'
 
 const header = HeaderTextModel.en
 const auth = AuthTextModel.en
+const confirmationModal = ConfirmationTextModel.en
 
 export const en: LocaleType = {
   auth: {
@@ -16,4 +17,5 @@ export const en: LocaleType = {
   header: {
     language: header.language,
   },
+  confirmationModal: confirmationModal,
 }
