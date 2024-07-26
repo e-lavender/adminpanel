@@ -2,6 +2,11 @@ import { styled } from 'styled-components'
 import { Modal } from '@flyingtornado06/ui-kit'
 
 export const ConfirmationModalStyled = {
+  Buttons: styled.div`
+    display: flex;
+    gap: 2.4rem;
+    justify-content: flex-end;
+  `,
   Content: styled(Modal.Content)`
     display: flex;
     flex-direction: column;
@@ -18,10 +23,5 @@ export const ConfirmationModalStyled = {
       min-height: 18rem;
       visibility: visible;
     }
-  `,
-  Buttons: styled.div`
-    display: flex;
-    gap: 2.4rem;
-    justify-content: flex-end;
   `,
 }

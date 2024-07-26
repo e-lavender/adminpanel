@@ -8,6 +8,7 @@ import { TableHeaderModel } from '@/ui/common/table/tabel-types'
 import { Button } from '@flyingtornado06/ui-kit'
 import Link from 'next/link'
 import { DotsIcon } from '@/assets/icons/dots-icon'
+import { CardDropdownMenu } from '@/shared/card-dropdown-menu'
 
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow, TableDots } = UsersTableStyles
@@ -38,6 +39,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
               <Table.DataCell>
                 <Button variant={'link'}>
                   <TableDots />
+                  <CardDropdownMenu />
                 </Button>
               </Table.DataCell>
             </TableRow>
