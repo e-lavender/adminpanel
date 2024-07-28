@@ -1,20 +1,14 @@
-import { useCallback, useMemo } from 'react'
-import { toast } from 'react-toastify'
-
+import { ConfirmationModal } from '@/shared/card-dropdown-menu/confirmation-modal'
+import { useDisclose } from '@/shared/hooks/useDisclose'
 import { DropdownMenu } from '@/ui/common/dropdown-menu'
 import { MenuItem } from '@/ui/common/menu-item'
-import { useDisclose } from '@/shared/hooks/useDisclose'
-import { ConfirmationModal } from '@/shared/card-dropdown-menu/confirmation-modal'
+import { DropdownMenuType, MENU } from '@/shared/card-dropdown-menu/data'
 
-export const CardDropdownMenu = ({ id }: DropDownMenuType) => {
+export const CardDropdownMenu = (Props: DropdownMenuType) => {
   const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
   const { isOpen: isControlled, onToggle: closeDropdownMenu } = useDisclose(true)
 
-  const currentMenuVersion: Array<DropdownMenuItemType> = MENU_VERSION[account]
-  const { changePostCardModalMode, clearPostCardModal, closePostCardModal, selectedPost } =
-    usePostCardModal()
-
-  const deleteUser = () => {
+  /*  const deleteUser = () => {
     const postImagesUploadIds = selectedPost.images.map(image => image.uploadId)
 
     deleteSelectedPost({ postId: selectedPost.id })
@@ -31,20 +25,18 @@ export const CardDropdownMenu = ({ id }: DropDownMenuType) => {
         closeDropdownMenu()
         toast.error(err)
       })
-  }
+  }*/
 
   return (
     <>
       <DropdownMenu>
-        {currentMenuVersion?.map(item => (
-          <MenuItem as={'button'} key={`${account}-${item.label}`} {...item} onClick={''} />
-        ))}
+        {MENU?.map(item => <MenuItem as={'button'} onClick={''} key={item.action} />)}
       </DropdownMenu>
 
       <ConfirmationModal
         isOpen={isModalOpened}
         onClose={closeModal}
-        onConfirmation={deleteUser}
+        onConfirmation={'' /*deleteUser*/}
         translation={'deleteUser'}
       />
     </>
