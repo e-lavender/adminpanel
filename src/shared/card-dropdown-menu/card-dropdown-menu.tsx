@@ -4,7 +4,7 @@ import { DropdownMenu } from '@/ui/common/dropdown-menu'
 import { MenuItem } from '@/ui/common/menu-item'
 import { DropdownMenuType, MENU } from '@/shared/card-dropdown-menu/data'
 
-export const CardDropdownMenu = (Props: DropdownMenuType) => {
+export const CardDropdownMenu = () => {
   const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
   const { isOpen: isControlled, onToggle: closeDropdownMenu } = useDisclose(true)
 
@@ -30,13 +30,15 @@ export const CardDropdownMenu = (Props: DropdownMenuType) => {
   return (
     <>
       <DropdownMenu>
-        {MENU?.map(item => <MenuItem as={'button'} onClick={''} key={item.action} />)}
+        {MENU?.map(({ action, icon, label }) => (
+          <MenuItem as={'button'} icon={icon} key={action} label={label} onClick={() => {}} />
+        ))}
       </DropdownMenu>
 
       <ConfirmationModal
         isOpen={isModalOpened}
         onClose={closeModal}
-        onConfirmation={'' /*deleteUser*/}
+        onConfirmation={() => {} /*deleteUser*/}
         translation={'deleteUser'}
       />
     </>

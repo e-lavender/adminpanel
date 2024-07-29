@@ -1,23 +1,22 @@
 import { ComponentPropsWithoutRef, ElementType, Fragment } from 'react'
 
-import { IconType } from '@/shared/types'
+import { SVGIconType } from '@/shared/card-dropdown-menu/data'
+import { Typography } from '@flyingtornado06/ui-kit'
 import * as SideBarMenu from '@radix-ui/react-navigation-menu'
 import Link from 'next/link'
 
-import { MenuItemStyles } from './menu-item.styled'
-
-type MenuItemProps<T extends ElementType = typeof Link> = {
+type MenuItemProps<T extends ElementType> = {
   as?: T
   asListItem?: boolean
   className?: string
   disabled?: boolean
-  icon?: IconType
+  icon?: SVGIconType
   isSelected?: boolean
   isStyled?: boolean
   label?: string
 } & ComponentPropsWithoutRef<T>
 
-export const MenuItem = <T extends ElementType = typeof Link>({
+export const MenuItem = <T extends ElementType>({
   as,
   asListItem = true,
   children,
@@ -29,13 +28,13 @@ export const MenuItem = <T extends ElementType = typeof Link>({
   label,
   ...props
 }: MenuItemProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof MenuItemProps<T>>) => {
-  const Container = asListItem ? SideBarMenu.Item : Fragment
-  const { LabelStyled, LinkComponent } = MenuItemStyles
   const SVGMenuIcon = icon || Fragment
+  const Component = as || Link
+  const Container = asListItem ? SideBarMenu.Item : Fragment
 
   return (
     <Container>
-      <LinkComponent
+      <Component
         aria-disabled={disabled}
         aria-hidden={disabled}
         href={href || null}
@@ -45,8 +44,8 @@ export const MenuItem = <T extends ElementType = typeof Link>({
         {children}
 
         <SVGMenuIcon />
-        <LabelStyled>{label}</LabelStyled>
-      </LinkComponent>
+        <Typography>{label}</Typography>
+      </Component>
     </Container>
   )
 }
