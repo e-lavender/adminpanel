@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const DropDownMenuStyled = {
-  Dots: styled('nav')`
+  Dots: styled.nav<{ $isActive: boolean }>`
     cursor: pointer;
 
     display: flex;
@@ -14,15 +14,12 @@ export const DropDownMenuStyled = {
 
     caret-color: transparent;
 
-    & p {
+    p {
       width: 0.4rem;
       height: 0.4rem;
-      background-color: var(--text-color-primary);
+      background-color: ${props =>
+        props.$isActive ? 'var(--color-accent-500)' : 'var(--text-color-primary)'};
       border-radius: 100%;
-
-      &.active {
-        background-color: var(--color-accent-500);
-      }
     }
   `,
   List: styled.div`
@@ -87,21 +84,21 @@ export const DropDownMenuStyled = {
           }
         }
 
-        &:first-child {
-          animation-delay: calc(var(50));
-        }
-
-        &:nth-child(2) {
-          animation-delay: calc(var(50) * 2);
-        }
-
-        &:nth-child(3) {
-          animation-delay: calc(var(50) * 3);
-        }
-
-        &:nth-child(4) {
-          animation-delay: calc(var(50) * 4);
-        }
+        //&:first-child {
+        //  animation-delay: calc(var(50));
+        //}
+        //
+        //&:nth-child(2) {
+        //  animation-delay: calc(var(50) * 2);
+        //}
+        //
+        //&:nth-child(3) {
+        //  animation-delay: calc(var(50) * 3);
+        //}
+        //
+        //&:nth-child(4) {
+        //  animation-delay: calc(var(50) * 4);
+        //}
       }
     }
   `,

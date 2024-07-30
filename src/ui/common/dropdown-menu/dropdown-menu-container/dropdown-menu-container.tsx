@@ -6,6 +6,7 @@ import { DropDownMenuStyled } from '@/ui/common/dropdown-menu/dropdown-menu-cont
 import clsx from 'clsx'
 
 import s from './dropdown-menu-container.module.scss'
+
 export type MenuProps = PropsWithChildren<{
   menuStyle?: string
 }>
@@ -19,23 +20,23 @@ export const DropdownMenuContainer = ({ children, menuStyle }: MenuProps) => {
 
   const clickHandler = () => openMenu()
   const styles = {
-    dot: clsx(s.dot, isMenuOpen && s.active),
+    //dot: clsx(s.dot, isMenuOpen && s.active),
     list: clsx(isMenuOpen && s.active, menuStyle),
     menu: clsx(s.list, isMenuOpen && s.fade),
   }
 
   return (
-    <nav className={s.navigation}>
-      <div className={s.dots} onClick={clickHandler}>
-        <p className={styles.dot}></p>
-        <p className={styles.dot}></p>
-        <p className={styles.dot}></p>
-      </div>
+    <Navigation>
+      <Dots onClick={clickHandler} $isActive={isMenuOpen}>
+        <p></p>
+        <p></p>
+        <p></p>
+      </Dots>
 
-      <div className={styles.menu} ref={menuRef}>
-        <ul className={styles.list}>{children}</ul>
+      <div {/*className={styles.menu}*/} ref={menuRef}>
+        <List>{children}</List>
       </div>
-    </nav>
+    </Navigation>
   )
 }
 //   return (
