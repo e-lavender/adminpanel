@@ -38,7 +38,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
               </Table.DataCell>
               <Table.DataCell>
                 <Button variant={'link'}>
-                  <TableDots />
+                  {/*<TableDots />*/}
                   <CardDropdownMenu />
                 </Button>
               </Table.DataCell>

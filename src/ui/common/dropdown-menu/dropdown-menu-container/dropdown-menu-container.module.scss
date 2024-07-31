@@ -1,7 +1,22 @@
-import { styled } from 'styled-components'
+.navigation {
+  --animation-duration: 400ms;
+  --animation-delay: 50ms;
 
-export const DropDownMenuStyled = {
-  Dots: styled.nav<{ $isActive: boolean }>`
+  position: relative;
+  z-index: 5;
+
+  display: inline-block;
+
+  height: 6rem;
+
+  -webkit-tap-highlight-color: transparent;
+
+  &:active,
+  &:hover {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dots {
     cursor: pointer;
 
     display: flex;
@@ -14,15 +29,19 @@ export const DropDownMenuStyled = {
 
     caret-color: transparent;
 
-    p {
+    & p {
       width: 0.4rem;
       height: 0.4rem;
-      background-color: ${props =>
-        props.$isActive ? 'var(--color-accent-500)' : 'var(--text-color-primary)'};
+      background-color: var(--text-color-primary);
       border-radius: 100%;
+
+      &.active {
+        background-color: var(--color-accent-500);
+      }
     }
-  `,
-  List: styled.div`
+  }
+
+  .list {
     position: absolute;
     top: 5rem;
     right: 0;
@@ -70,6 +89,8 @@ export const DropDownMenuStyled = {
         opacity: 0;
         caret-color: transparent;
 
+        animation: fade-in var(--animation-duration) linear forwards;
+
         &:hover {
           span,
           svg {
@@ -84,47 +105,31 @@ export const DropDownMenuStyled = {
           }
         }
 
-        //&:first-child {
-        //  animation-delay: calc(var(50));
-        //}
-        //
-        //&:nth-child(2) {
-        //  animation-delay: calc(var(50) * 2);
-        //}
-        //
-        //&:nth-child(3) {
-        //  animation-delay: calc(var(50) * 3);
-        //}
-        //
-        //&:nth-child(4) {
-        //  animation-delay: calc(var(50) * 4);
-        //}
+        &:first-child {
+          animation-delay: calc(var(--animation-delay));
+        }
+
+        &:nth-child(2) {
+          animation-delay: calc(var(--animation-delay) * 2);
+        }
+
+        &:nth-child(3) {
+          animation-delay: calc(var(--animation-delay) * 3);
+        }
+
+        &:nth-child(4) {
+          animation-delay: calc(var(--animation-delay) * 4);
+        }
       }
     }
-  `,
-  Navigation: styled.div`
-    --animation-duration: 400ms;
-    --animation-delay: 50ms;
+  }
 
-    position: relative;
-    z-index: 5;
+  @keyframes fade-in {
 
-    display: inline-block;
-
-    height: 6rem;
-
-    -webkit-tap-highlight-color: transparent;
-
-    &:active,
-    &:hover {
-      -webkit-tap-highlight-color: transparent;
+    to {
+      transform: translateY(0);
+      visibility: visible;
+      opacity: 1;
     }
-    @keyframes fade-in {
-      to {
-        transform: translateY(0);
-        visibility: visible;
-        opacity: 1;
-      }
-    }
-  `,
+  }
 }
