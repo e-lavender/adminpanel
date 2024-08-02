@@ -1,4 +1,4 @@
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 
 export const DropDownMenuStyled = {
   Dots: styled.nav<{ $isActive: boolean }>`
@@ -21,8 +21,13 @@ export const DropDownMenuStyled = {
         props.$isActive ? 'var(--color-accent-500)' : 'var(--text-color-primary)'};
       border-radius: 100%;
     }
+    &:hover {
+      p {
+        background-color: var(--color-accent-500);
+      }
+    }
   `,
-  List: styled.div`
+  Menu: styled.div<{ $isActive: boolean }>`
     position: absolute;
     top: 5rem;
     right: 0;
@@ -38,10 +43,11 @@ export const DropDownMenuStyled = {
     background-color: var(--bg-color-secondary);
     border: 0.1rem solid var(--text-color-disabled);
     border-radius: 0.5rem;
-
-    &.fade {
-      animation: fade-in 0.3s ease-in forwards;
-    }
+    ${props =>
+      props.$isActive &&
+      css`
+        animation: fade-in 0.3s ease-in forwards;
+      `};
 
     & ul {
       display: flex;
@@ -107,7 +113,7 @@ export const DropDownMenuStyled = {
     --animation-delay: 50ms;
 
     position: relative;
-    z-index: 5;
+    z-index: 50;
 
     display: inline-block;
 
