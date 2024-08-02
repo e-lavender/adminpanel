@@ -2,12 +2,13 @@ import React from 'react'
 
 import { ProfileTabs } from '@/features/user/ui/ProfileTabs/profile-tabs'
 import { UserInfo } from '@/features/user/ui/user-info'
-import Followers from '@/pages/user/Followers'
-import Following from '@/pages/user/Following'
+import Following from '@/pages/user/following'
 import Payments from '@/pages/user/payments'
 import UploadedPhotos from '@/pages/user/uploaded-photos'
 import { DropdownMenu } from '@/ui/common/dropdown-menu'
 import { useRouter } from 'next/router'
+
+import Followers from './followers'
 
 const renderItem: Record<string, () => React.JSX.Element> = {
   followers: Followers,
