@@ -3,6 +3,7 @@ import { useDisclose } from '@/shared/hooks/useDisclose'
 import { DropdownMenu } from '@/ui/common/dropdown-menu'
 import { MenuItem } from '@/ui/common/menu-item'
 import { DropdownMenuType, MENU } from '@/shared/card-dropdown-menu/data'
+import { DropdownMenuRadix } from '@/ui/common/dropdown-menu-radix'
 
 export const CardDropdownMenu = () => {
   const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
@@ -35,6 +36,7 @@ export const CardDropdownMenu = () => {
         ))}
       </DropdownMenu>
 
+      <DropdownMenuRadix />
       <ConfirmationModal
         isOpen={isModalOpened}
         onClose={closeModal}

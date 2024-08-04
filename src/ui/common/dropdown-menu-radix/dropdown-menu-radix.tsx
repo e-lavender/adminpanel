@@ -1,4 +1,5 @@
 import { Dots } from '@/app/assets/svg/dots-icon'
+import { MENU } from '@/shared/card-dropdown-menu/data'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 export const DropdownMenuRadix = () => (
@@ -11,32 +12,15 @@ export const DropdownMenuRadix = () => (
 
     <DropdownMenu.Portal>
       <DropdownMenu.Content>
-        <DropdownMenu.Label />
-        <DropdownMenu.Item />
-
-        <DropdownMenu.Group>
-          <DropdownMenu.Item />
-        </DropdownMenu.Group>
-
-        <DropdownMenu.CheckboxItem>
-          <DropdownMenu.ItemIndicator />
-        </DropdownMenu.CheckboxItem>
-
-        <DropdownMenu.RadioGroup>
-          <DropdownMenu.RadioItem>
-            <DropdownMenu.ItemIndicator />
-          </DropdownMenu.RadioItem>
-        </DropdownMenu.RadioGroup>
-
-        <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger />
-          <DropdownMenu.Portal>
-            <DropdownMenu.SubContent />
-          </DropdownMenu.Portal>
-        </DropdownMenu.Sub>
-
-        <DropdownMenu.Separator />
-        <DropdownMenu.Arrow />
+        {MENU?.map(({ action, icon, label }) => (
+          <DropdownMenu.Item
+            as={'button'}
+            icon={icon}
+            key={action}
+            label={label}
+            onClick={() => {}}
+          />
+        ))}
       </DropdownMenu.Content>
     </DropdownMenu.Portal>
   </DropdownMenu.Root>
