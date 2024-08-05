@@ -1,9 +1,10 @@
 import { ConfirmationModal } from '@/shared/card-dropdown-menu/confirmation-modal'
+import { DropdownMenuType, MENU } from '@/shared/card-dropdown-menu/data'
 import { useDisclose } from '@/shared/hooks/useDisclose'
 import { DropdownMenu } from '@/ui/common/dropdown-menu'
 import { MenuItem } from '@/ui/common/menu-item'
-import { DropdownMenuType, MENU } from '@/shared/card-dropdown-menu/data'
-import { DropdownMenuRadix } from '@/ui/common/dropdown-menu-radix'
+
+import { Dropdown } from '../../ui/common/dropdown'
 
 export const CardDropdownMenu = () => {
   const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
@@ -30,13 +31,17 @@ export const CardDropdownMenu = () => {
 
   return (
     <>
-      <DropdownMenu>
+      {/* <DropdownMenu>
         {MENU?.map(({ action, icon, label }) => (
           <MenuItem as={'button'} icon={icon} key={action} label={label} onClick={() => {}} />
         ))}
-      </DropdownMenu>
+      </DropdownMenu>*/}
 
-      <DropdownMenuRadix />
+      <Dropdown>
+        {MENU?.map(({ action, icon, label }) => (
+          <MenuItem as={'button'} icon={icon} key={action} label={label} onClick={() => {}} />
+        ))}
+      </Dropdown>
       <ConfirmationModal
         isOpen={isModalOpened}
         onClose={closeModal}
