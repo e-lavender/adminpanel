@@ -1,5 +1,5 @@
-import { Table } from '@/ui/common/table/table'
 import { DotsIcon } from '@/assets/icons/dots-icon'
+import { Table } from '@/ui/common/table/table'
 import { styled } from 'styled-components'
 
 export const UsersTableStyles = {
