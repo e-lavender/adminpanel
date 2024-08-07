@@ -18,8 +18,6 @@ import Link from 'next/link'
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
   const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
-  const [deleteUser] = useRemoveUserMutation()
-  const [banUser] = useBanUserMutation()
 
   return (
     <>
