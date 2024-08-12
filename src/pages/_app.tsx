@@ -9,13 +9,13 @@ import { WithHomePageLayout } from '@/ui/templates/layouts/temp-layout/template-
 import '@/styles/index.css'
 import '@flyingtornado06/ui-kit/dist/style.css'
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = {}, IP = P> = {
   getLayout?: (page: ReactElement) => ReactNode
-}
+} & NextPage<P, IP>
 
-type AppPropsWithLayout = AppProps & {
+type AppPropsWithLayout = {
   Component: NextPageWithLayout
-}
+} & AppProps
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page: ReactElement) => page)

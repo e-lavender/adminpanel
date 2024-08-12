@@ -1,5 +1,5 @@
-import { styled } from 'styled-components'
 import { Modal } from '@flyingtornado06/ui-kit'
+import { styled } from 'styled-components'
 
 export const ConfirmationModalStyled = {
   Buttons: styled.div`

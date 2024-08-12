@@ -13,9 +13,9 @@ export const ru = {
       title: auth.signIn.title,
     },
   },
+  confirmationModal: confirmationModal,
   header: {
     language: header.language,
   },
-  confirmationModal: confirmationModal,
 }
 export type LocaleType = typeof ru
