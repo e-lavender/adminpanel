@@ -1,10 +1,6 @@
-import { ConfirmationModal } from '@/shared/card-dropdown-menu/confirmation-modal'
-import { DropdownMenuType, MENU } from '@/shared/card-dropdown-menu/data'
-import { useDisclose } from '@/shared/hooks/useDisclose'
-import { DropdownMenu } from '@/ui/common/dropdown-menu'
+import { MENU } from '@/shared/card-dropdown-menu/data'
+import { Dropdown } from '@/ui/common/dropdown'
 import { MenuItem } from '@/ui/common/menu-item'
-
-import { Dropdown } from '../../ui/common/dropdown'
 
 export const CardDropdownMenu = () => {
   return (

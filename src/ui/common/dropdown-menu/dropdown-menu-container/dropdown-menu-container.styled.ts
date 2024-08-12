@@ -108,13 +108,11 @@ export const DropDownMenuStyled = {
       }
     }
   `,
-  Navigation: styled.div`
+  Navigation: styled.div.attrs(() => ({ style: {} }))`
     --animation-duration: 400ms;
     --animation-delay: 50ms;
 
     position: relative;
-    z-index: 50;
-
     display: inline-block;
 
     height: 6rem;

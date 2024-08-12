@@ -1,10 +1,6 @@
 import React from 'react'
 
 import { ROUTES } from '@/app/constants/routes'
-import {
-  useBanUserMutation,
-  useRemoveUserMutation,
-} from '@/features/users/api/users-list.api.types'
 import { UsersTableStyles } from '@/features/users/ui/users-table.styled'
 import { User } from '@/shared/appolo-client/Schema.types'
 import { CardDropdownMenu } from '@/shared/card-dropdown-menu'
@@ -44,9 +40,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
                   {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
                 </Table.DataCell>
                 <Table.DataCell>
-                  <Button variant={'link'}>
-                    <CardDropdownMenu />
-                  </Button>
+                  <CardDropdownMenu />
                 </Table.DataCell>
               </TableRow>
             )

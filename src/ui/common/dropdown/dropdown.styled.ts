@@ -1,28 +1,13 @@
-import styled from 'styled-components'
 import { Dots } from '@/app/assets/svg/dots-icon'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { styled } from 'styled-components'
 
 export const DropdownStyles = {
-  Navigation: styled(DropdownMenu.Content)`
-    --animation-duration: 400ms;
-    --animation-delay: 50ms;
-
-    position: relative;
-    z-index: 5;
-    display: inline-block;
-    height: 6rem;
-    -webkit-tap-highlight-color: transparent;
-
-    &:active,
-    &:hover {
-      -webkit-tap-highlight-color: transparent;
-    }
-  `,
-
   DotsButton: styled(Dots)<{ $isActive: boolean }>`
     cursor: pointer;
-    color: ${({ $isActive }) => ($isActive ? 'blue' : 'white')};
+    color: ${({ $isActive }) => ($isActive ? 'var(--color-accent-500);' : 'white')};
   `,
+
   List: styled.div`
     position: absolute;
     top: 5rem;
@@ -76,21 +61,21 @@ export const DropdownStyles = {
             color: var(--color-accent-500);
           }
         }
-
         &:first-child {
-          animation-delay: calc(var(--animation-delay));
+          --animation-delay: 3000;
+          animation-delay: calc(var(3000));
         }
 
         &:nth-child(2) {
-          animation-delay: calc(var(--animation-delay) * 2);
+          animation-delay: calc(var(3000) * 2);
         }
 
         &:nth-child(3) {
-          animation-delay: calc(var(--animation-delay) * 3);
+          animation-delay: calc(var(3000) * 3);
         }
 
         &:nth-child(4) {
-          animation-delay: calc(var(--animation-delay) * 4);
+          animation-delay: calc(var(3000) * 4);
         }
       }
     }
@@ -101,6 +86,21 @@ export const DropdownStyles = {
         visibility: visible;
         opacity: 1;
       }
+    }
+  `,
+  Navigation: styled(DropdownMenu.Content)`
+    --animation-duration: 400ms;
+    --animation-delay: 50ms;
+
+    position: relative;
+    z-index: 5;
+    display: inline-block;
+    height: 6rem;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active,
+    &:hover {
+      -webkit-tap-highlight-color: transparent;
     }
   `,
 }

@@ -49,10 +49,4 @@ export const UsersTableStyles = {
       vertical-align: middle;
     }
   `,
-  TableDots: styled(DotsIcon)`
-    color: var(--color-light-100);
-    &:hover {
-      color: var(--color-accent-500);
-    }
-  `,
 }

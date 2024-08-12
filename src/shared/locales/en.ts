@@ -14,8 +14,8 @@ export const en: LocaleType = {
       title: auth.signIn.title,
     },
   },
+  confirmationModal: confirmationModal,
   header: {
     language: header.language,
   },
-  confirmationModal: confirmationModal,
 }

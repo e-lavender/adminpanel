@@ -4,9 +4,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 export const DropdownMenuRadix = () => (
   <DropdownMenu.Root>
     <DropdownMenu.Trigger asChild>
-      <button>
-        <Dots />
-      </button>
+      <Dots />
     </DropdownMenu.Trigger>
 
     <DropdownMenu.Portal>
@@ -23,9 +21,7 @@ export const DropdownMenuRadix = () => (
         </DropdownMenu.CheckboxItem>
 
         <DropdownMenu.RadioGroup>
-          <DropdownMenu.RadioItem>
-            <DropdownMenu.ItemIndicator />
-          </DropdownMenu.RadioItem>
+          <DropdownMenu.ItemIndicator />
         </DropdownMenu.RadioGroup>
 
         <DropdownMenu.Sub>

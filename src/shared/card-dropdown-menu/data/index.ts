@@ -14,7 +14,7 @@ export const MENU: DropdownMenuType = [
   },
   {
     action: 'info',
-    icon: DotsIcon,
+    icon: undefined,
     label: 'More Information',
   },
 ]
@@ -27,14 +27,14 @@ export type DropdownMenuItemType = {
 export type DropdownMenuType = Array<DropdownMenuItemType>
 
 export const ActionTypes = {
+  ban: 'ban',
   copy: 'copy',
   delete: 'delete',
   edit: 'edit',
   follow: 'follow',
+  info: 'info',
   report: 'report',
   unfollow: 'unfollow',
-  ban: 'ban',
-  info: 'info',
 } as const
 
 export type SVGIconType = typeof HomeMenuIcon

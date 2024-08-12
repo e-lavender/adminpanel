@@ -1,7 +1,7 @@
+import { useTranslation } from '@/shared/hooks/useTranslation'
 import { Button, Modal, Typography } from '@flyingtornado06/ui-kit'
 
 import { ConfirmationModalStyled } from './confirmation-modal.styled'
-import { useTranslation } from '@/shared/hooks/useTranslation'
 
 type ModalProps = {
   btnsStyle?: string
@@ -29,7 +29,7 @@ export const ConfirmationModal = ({
     onConfirmation()
     onClose()
   }
-  const { Content, Buttons } = ConfirmationModalStyled
+  const { Buttons, Content } = ConfirmationModalStyled
 
   const { t } = useTranslation()
 
