@@ -14,7 +14,7 @@ export const MENU: DropdownMenuType = [
   },
   {
     action: 'info',
-    icon: undefined,
+    icon: DotsIcon,
     label: 'More Information',
   },
 ]
