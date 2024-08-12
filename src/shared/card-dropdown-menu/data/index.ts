@@ -1,3 +1,4 @@
+import { DotsIcon } from '@/assets/icons/dots-icon'
 import { HomeMenuIcon } from '@flyingtornado06/ui-kit/dist/assets'
 
 export const MENU: DropdownMenuType = [
@@ -13,7 +14,7 @@ export const MENU: DropdownMenuType = [
   },
   {
     action: 'info',
-    icon: undefined,
+    icon: DotsIcon,
     label: 'More Information',
   },
 ]

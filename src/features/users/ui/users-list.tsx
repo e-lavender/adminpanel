@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
-import { useGetAllUsersQuery } from '@/features/users/api/users-list.api.types'
+import {
+  useBanUserMutation,
+  useGetAllUsersQuery,
+  useRemoveUserMutation,
+} from '@/features/users/api/users-list.api.types'
 import { FILTER_OPTIONS, USERS_TABLE_COLUMNS } from '@/features/users/constants'
 import { UsersListStyled } from '@/features/users/ui/users-list.styled'
 import { UsersTable } from '@/features/users/ui/users-table'
@@ -28,7 +32,8 @@ export const UsersList = () => {
       statusFilter: filter,
     },
   })
-
+  const [deleteUser] = useRemoveUserMutation()
+  const [banUser] = useBanUserMutation()
   const table = useMemo(
     () =>
       data?.getUsers.users && (

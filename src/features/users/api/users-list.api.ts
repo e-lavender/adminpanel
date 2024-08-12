@@ -44,3 +44,18 @@ export const USERS = gql`
     }
   }
 `
+export const REMOVE_USER = gql`
+  mutation RemoveUser($userId: Int!) {
+    removeUser(userId: $userId)
+  }
+`
+export const BAN_USER = gql`
+  mutation BanUser($banReason: String!, $userId: Int!) {
+    banUser(banReason: $banReason, userId: $userId)
+  }
+`
+export const UNBAN_USER = gql`
+  mutation UnbanUser($userId: Int!) {
+    unbanUser(userId: $userId)
+  }
+`
