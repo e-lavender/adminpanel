@@ -16,8 +16,6 @@ export const DropdownStyles = {
     overflow: hidden;
     width: 16.1rem;
     padding: 1.2rem;
-    visibility: hidden;
-    opacity: 0;
     background-color: var(--bg-color-secondary);
     border: 0.1rem solid var(--text-color-disabled);
     border-radius: 0.5rem;
