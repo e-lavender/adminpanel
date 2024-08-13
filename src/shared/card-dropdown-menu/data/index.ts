@@ -1,20 +1,22 @@
+import { BanUser } from '@/app/assets/svg/ban-user-icon'
+import { DeleteUser } from '@/app/assets/svg/delete-user-icon'
 import { DotsIcon } from '@/assets/icons/dots-icon'
 import { HomeMenuIcon } from '@flyingtornado06/ui-kit/dist/assets'
 
 export const MENU: DropdownMenuType = [
   {
     action: 'delete',
-    icon: undefined,
+    icon: DeleteUser,
     label: 'Delete User',
   },
   {
     action: 'ban',
-    icon: undefined,
+    icon: BanUser,
     label: 'Ban in the system',
   },
   {
     action: 'info',
-    icon: undefined,
+    icon: DotsIcon,
     label: 'More Information',
   },
 ]
