@@ -15,7 +15,7 @@ export const CardDropdownMenu = () => {
       <Dropdown>
         {MENU?.map(({ action, icon, label }) => (
           // <MenuItem as={'button'} icon={icon} key={action} label={label} onClick={() => {}} />
-          <DropdownMenu.Item>{'askdadjasdjak'}</DropdownMenu.Item>
+          <DropdownMenu.Item key={action}>{label}</DropdownMenu.Item>
         ))}
       </Dropdown>
     </>
