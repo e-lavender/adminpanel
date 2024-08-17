@@ -21,7 +21,6 @@ export const Dropdown = ({ children }: ToolbarProps) => {
 
       <DropdownMenu.Portal>
         <Navigation>
-          {/*<div className={'list'}>{children}</div>*/}
           <List>{children}</List>
         </Navigation>
       </DropdownMenu.Portal>
