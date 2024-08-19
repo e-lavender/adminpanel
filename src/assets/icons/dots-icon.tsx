@@ -1,14 +1,10 @@
-import { Ref, SVGProps, forwardRef, memo } from 'react'
-
-const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+export const DotsIcon = () => (
   <svg
     fill={'currentColor'}
     height={24}
-    ref={ref}
     viewBox={'0 0 24 24'}
     width={24}
     xmlns={'http://www.w3.org/2000/svg'}
-    {...props}
   >
     <g clipPath={'url(#clip0_301_4286)'}>
       <path
@@ -37,7 +33,3 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgComponent)
-const Memo = memo(ForwardRef)
-
-export { Memo as DotsIcon }

@@ -1,13 +1,5 @@
-import { Ref, SVGProps, forwardRef, memo } from 'react'
-const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
-  <svg
-    fill={'none'}
-    height={24}
-    ref={ref}
-    width={24}
-    xmlns={'http://www.w3.org/2000/svg'}
-    {...props}
-  >
+export const DeleteUser = () => (
+  <svg fill={'none'} height={24} width={24} xmlns={'http://www.w3.org/2000/svg'}>
     <g clipPath={'url(#a)'} fill={'currentColor'}>
       <path
         d={
@@ -22,7 +14,3 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =
     </defs>
   </svg>
 )
-const ForwardRef = forwardRef(SvgComponent)
-const Memo = memo(ForwardRef)
-
-export { Memo as DeleteUser }
