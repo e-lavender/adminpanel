@@ -8,12 +8,6 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 export const CardDropdownMenu = () => {
   return (
     <>
-      {/* <DropdownMenu>
-        {MENU?.map(({ action, icon, label }) => (
-          <MenuItem as={'button'} icon={icon} key={action} label={label} onClick={() => {}} />
-        ))}
-      </DropdownMenu>*/}
-
       <Dropdown>
         {MENU?.map(({ action, icon, label }) => (
           // <MenuItem as={'button'} icon={icon} key={action} label={label} onClick={() => {}} />
