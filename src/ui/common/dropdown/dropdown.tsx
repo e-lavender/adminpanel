@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 
-import { Dots } from '@/app/assets/svg/dots-icon'
 import { useDisclose } from '@/shared/hooks/useDisclose'
 import { DropdownStyles } from '@/ui/common/dropdown/dropdown.styled'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
@@ -10,7 +9,7 @@ export type ToolbarProps = {
 }
 
 export const Dropdown = ({ children }: ToolbarProps) => {
-  const { DotsButton, List, Navigation } = DropdownStyles
+  const { Content, DotsButton } = DropdownStyles
   const { isOpen, onToggle } = useDisclose()
 
   return (
@@ -20,9 +19,7 @@ export const Dropdown = ({ children }: ToolbarProps) => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <Navigation>
-          <List>{children}</List>
-        </Navigation>
+        <Content>{children}</Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
   )
