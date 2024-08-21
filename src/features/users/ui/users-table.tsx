@@ -1,19 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ROUTES } from '@/app/constants/routes'
+import {
+  useBanUserMutation,
+  useRemoveUserMutation,
+} from '@/features/users/api/users-list.api.types'
 import { UsersTableStyles } from '@/features/users/ui/users-table.styled'
 import { User } from '@/shared/appolo-client/Schema.types'
 import { CardDropdownMenu } from '@/shared/card-dropdown-menu'
 import { ConfirmationModal } from '@/shared/card-dropdown-menu/confirmation-modal'
+import { ActionTypes } from '@/shared/card-dropdown-menu/data'
 import { useDisclose } from '@/shared/hooks/useDisclose'
 import { Table } from '@/ui/common/table'
 import { TableHeaderModel } from '@/ui/common/table/tabel-types'
 import { Button } from '@flyingtornado06/ui-kit'
 import Link from 'next/link'
-
+export type HandlerType = {
+  action: keyof typeof ActionTypes
+  userId: number
+}
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
   const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
+  const [userId, setUserId] = useState<number | undefined>(undefined)
+  const [action, setAction] = useState<keyof typeof ActionTypes | undefined>(undefined)
+  const [deleteUser] = useRemoveUserMutation()
+  const [banUser] = useBanUserMutation()
+  const functions: Record<string, () => void> = {
+    ban: () => {
+      userId && void banUser({ variables: { banReason: 'test', userId } })
+    },
+    delete: () => {
+      userId && void deleteUser({ variables: { userId } })
+    },
+  }
+
+  const modalHandler = ({ action, userId }: HandlerType) => {
+    setAction(action)
+    setUserId(userId)
+  }
 
   return (
     <>
@@ -40,7 +65,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
                   {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
                 </Table.DataCell>
                 <Table.DataCell>
-                  <CardDropdownMenu />
+                  <CardDropdownMenu handler={modalHandler} userId={user.profile.id} />
                 </Table.DataCell>
               </TableRow>
             )
@@ -48,9 +73,9 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
         </TableBody>
       </TableRoot>
       <ConfirmationModal
-        isOpen={isModalOpened}
+        isOpen
         onClose={closeModal}
-        onConfirmation={() => {}}
+        onConfirmation={functions[action!]}
         translation={'deleteUser'}
       />
     </>
