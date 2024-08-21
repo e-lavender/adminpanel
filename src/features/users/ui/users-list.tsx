@@ -32,8 +32,7 @@ export const UsersList = () => {
       statusFilter: filter,
     },
   })
-  const [deleteUser] = useRemoveUserMutation()
-  const [banUser] = useBanUserMutation()
+
   const table = useMemo(
     () =>
       data?.getUsers.users && (
