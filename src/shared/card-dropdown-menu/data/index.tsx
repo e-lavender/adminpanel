@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { ACTION_TYPES } from '@/app/constants/enum/enums'
 import { HomeMenuIcon } from '@flyingtornado06/ui-kit/dist/assets'
 
 export const MENU: DropdownMenuType = [
@@ -110,23 +111,12 @@ export const MENU: DropdownMenuType = [
     label: 'More Information',
   },
 ]
-
+export type UserAllowActionType = keyof Pick<typeof ACTION_TYPES, 'ban' | 'delete' | 'info'>
 export type DropdownMenuItemType = {
-  action: keyof typeof ActionTypes
+  action: UserAllowActionType
   icon: any
   label: string
 }
 export type DropdownMenuType = Array<DropdownMenuItemType>
-
-export const ActionTypes = {
-  ban: 'ban',
-  copy: 'copy',
-  delete: 'delete',
-  edit: 'edit',
-  follow: 'follow',
-  info: 'info',
-  report: 'report',
-  unfollow: 'unfollow',
-} as const
 
 export type SVGIconType = typeof HomeMenuIcon
