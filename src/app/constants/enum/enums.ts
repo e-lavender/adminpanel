@@ -25,3 +25,13 @@ export enum SelectVariant {
   Pagination = 'pagination',
   Primary = 'primary',
 }
+export const ACTION_TYPES = {
+  ban: 'ban',
+  copy: 'copy',
+  delete: 'delete',
+  edit: 'edit',
+  follow: 'follow',
+  info: 'info',
+  report: 'report',
+  unfollow: 'unfollow',
+} as const

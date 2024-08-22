@@ -13,7 +13,7 @@ export const Dropdown = ({ children }: ToolbarProps) => {
   const { isOpen, onToggle } = useDisclose()
 
   return (
-    <DropdownMenu.Root onOpenChange={onToggle} open={isOpen}>
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         <DotsButton $isActive={isOpen} />
       </DropdownMenu.Trigger>
