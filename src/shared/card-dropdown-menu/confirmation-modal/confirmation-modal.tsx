@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { UserAllowActionType } from '@/shared/card-dropdown-menu/data'
 import { useTranslation } from '@/shared/hooks/useTranslation'
-import { Button, Modal, Select, Typography } from '@flyingtornado06/ui-kit'
+import { Button, Modal, Typography } from '@flyingtornado06/ui-kit'
 
 import { ConfirmationModalStyled } from './confirmation-modal.styled'
 
@@ -30,7 +30,7 @@ export const ConfirmationModal = ({
   translation = 'logOut',
   userName,
 }: ModalProps) => {
-  const { Buttons, Content } = ConfirmationModalStyled
+  const { Buttons, Content, Select } = ConfirmationModalStyled
   const modalText: Record<string, any> = {
     ban: 'Ban user',
     delete: 'Delete user',
@@ -47,25 +47,30 @@ export const ConfirmationModal = ({
     yes,
   } = t.confirmationModal[typedTranslation]
   const [reason, setReason] = useState('')
-  const actionMessage = `Are you sure to ${action} user ${userName}?`
 
   return (
     <Modal onChange={onClose} open={isOpen}>
       <Modal.Button asChild />
       <Content onInteractOutside={e => e.preventDefault()} title={action && modalText[action]}>
-        <Typography variant={'regular-16'}>{actionMessage || translatedMessage}</Typography>
+        <Typography variant={'regular-16'}>
+          {`Are you sure to ${action} user `}
+          <b>{userName}?</b>
+        </Typography>
         {action === 'ban' && (
           <Select
             onChange={setReason}
             options={['Bad behavior', 'Advertising placement', 'Another reason']}
             value={reason}
+            placeholder={'Reason for ban'}
           />
         )}
         <Buttons>
-          <Button onClick={onConfirmation} variant={'outlined'}>
+          <Button fullWidth={true} onClick={onConfirmation} variant={'outlined'}>
             {confirmBtnLabel || yes}
           </Button>
-          <Button onClick={onClose}>{declineBtnLabel || no} </Button>
+          <Button fullWidth={true} onClick={onClose}>
+            {declineBtnLabel || no}{' '}
+          </Button>
         </Buttons>
       </Content>
     </Modal>
