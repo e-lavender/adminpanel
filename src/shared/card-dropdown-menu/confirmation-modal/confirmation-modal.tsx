@@ -1,10 +1,13 @@
+import { useState } from 'react'
+
+import { UserAllowActionType } from '@/shared/card-dropdown-menu/data'
 import { useTranslation } from '@/shared/hooks/useTranslation'
-import { Button, Modal, Typography } from '@flyingtornado06/ui-kit'
+import { Button, Modal, Select, Typography } from '@flyingtornado06/ui-kit'
 
 import { ConfirmationModalStyled } from './confirmation-modal.styled'
 
 type ModalProps = {
-  btnsStyle?: string
+  action: UserAllowActionType | undefined
   confirmBtnLabel?: string
   declineBtnLabel?: string
   isOpen: boolean
@@ -13,9 +16,10 @@ type ModalProps = {
   onConfirmation: () => void
   title?: string
   translation?: string
+  userName: string
 }
 export const ConfirmationModal = ({
-  btnsStyle,
+  action,
   confirmBtnLabel,
   declineBtnLabel,
   isOpen,
@@ -24,13 +28,13 @@ export const ConfirmationModal = ({
   onConfirmation,
   title,
   translation = 'logOut',
+  userName,
 }: ModalProps) => {
-  const onConfirm = () => {
-    onConfirmation()
-    onClose()
-  }
   const { Buttons, Content } = ConfirmationModalStyled
-
+  const modalText: Record<string, any> = {
+    ban: 'Ban user',
+    delete: 'Delete user',
+  }
   const { t } = useTranslation()
 
   type KeyTypesInTextModel = keyof typeof t.confirmationModal
@@ -42,15 +46,23 @@ export const ConfirmationModal = ({
     title: translatedTitle,
     yes,
   } = t.confirmationModal[typedTranslation]
+  const [reason, setReason] = useState('')
+  const actionMessage = `Are you sure to ${action} user ${userName}?`
 
   return (
     <Modal onChange={onClose} open={isOpen}>
       <Modal.Button asChild />
-      <Content onInteractOutside={e => e.preventDefault()} title={title || translatedTitle}>
-        <Typography variant={'regular-16'}>{message || translatedMessage}</Typography>
-
+      <Content onInteractOutside={e => e.preventDefault()} title={action && modalText[action]}>
+        <Typography variant={'regular-16'}>{actionMessage || translatedMessage}</Typography>
+        {action === 'ban' && (
+          <Select
+            onChange={setReason}
+            options={['Bad behavior', 'Advertising placement', 'Another reason']}
+            value={reason}
+          />
+        )}
         <Buttons>
-          <Button onClick={onConfirm} variant={'outlined'}>
+          <Button onClick={onConfirmation} variant={'outlined'}>
             {confirmBtnLabel || yes}
           </Button>
           <Button onClick={onClose}>{declineBtnLabel || no} </Button>

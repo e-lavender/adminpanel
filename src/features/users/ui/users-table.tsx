@@ -9,21 +9,24 @@ import { UsersTableStyles } from '@/features/users/ui/users-table.styled'
 import { User } from '@/shared/appolo-client/Schema.types'
 import { CardDropdownMenu } from '@/shared/card-dropdown-menu'
 import { ConfirmationModal } from '@/shared/card-dropdown-menu/confirmation-modal'
-import { ActionTypes } from '@/shared/card-dropdown-menu/data'
+import { UserAllowActionType } from '@/shared/card-dropdown-menu/data'
 import { useDisclose } from '@/shared/hooks/useDisclose'
 import { Table } from '@/ui/common/table'
 import { TableHeaderModel } from '@/ui/common/table/tabel-types'
 import { Button } from '@flyingtornado06/ui-kit'
 import Link from 'next/link'
+
 export type HandlerType = {
-  action: keyof typeof ActionTypes
+  action: UserAllowActionType
   userId: number
+  userName: string
 }
 export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
-  const { isOpen: isModalOpened, onClose: closeModal, onOpen: openModal } = useDisclose()
+  const { isOpen, onClose, onOpen } = useDisclose()
   const [userId, setUserId] = useState<number | undefined>(undefined)
-  const [action, setAction] = useState<keyof typeof ActionTypes | undefined>(undefined)
+  const [userName, setUserName] = useState<string>('')
+  const [action, setAction] = useState<UserAllowActionType | undefined>(undefined)
   const [deleteUser] = useRemoveUserMutation()
   const [banUser] = useBanUserMutation()
   const functions: Record<string, () => void> = {
@@ -31,13 +34,35 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
       userId && void banUser({ variables: { banReason: 'test', userId } })
     },
     delete: () => {
-      userId && void deleteUser({ variables: { userId } })
+      userId &&
+        deleteUser({ variables: { userId } })
+          .then(res => {
+            console.log('res', res)
+          })
+          .catch(err => {
+            console.log('err', err)
+          })
     },
   }
 
-  const modalHandler = ({ action, userId }: HandlerType) => {
+  const openModalHandler = ({ action, userId, userName }: HandlerType) => {
+    if (action === 'info') {
+      return
+    }
     setAction(action)
     setUserId(userId)
+    setUserName(userName)
+    onOpen()
+  }
+  const closeModalHandler = () => {
+    setAction(undefined)
+    setUserId(undefined)
+    setUserName('')
+    onClose()
+  }
+  const onConfirmationHandler = () => {
+    functions[action!]()
+    closeModalHandler()
   }
 
   return (
@@ -65,7 +90,11 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
                   {new Date(user.profile.createdAt).toLocaleDateString('ru-RU')}
                 </Table.DataCell>
                 <Table.DataCell>
-                  <CardDropdownMenu handler={modalHandler} userId={user.profile.id} />
+                  <CardDropdownMenu
+                    openModalHandler={openModalHandler}
+                    userId={user.profile.id}
+                    userName={user.profile.userName!}
+                  />
                 </Table.DataCell>
               </TableRow>
             )
@@ -73,79 +102,13 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
         </TableBody>
       </TableRoot>
       <ConfirmationModal
-        isOpen
-        onClose={closeModal}
-        onConfirmation={functions[action!]}
+        action={action}
+        isOpen={isOpen}
+        onClose={closeModalHandler}
+        onConfirmation={onConfirmationHandler}
         translation={'deleteUser'}
+        userName={userName}
       />
     </>
   )
 }
-
-// const HeadCell = ({
-//                       sortable,
-//                       onClick,
-//                       sort,
-//                       columnKey,
-//                       title,
-//                       className,
-//                       ...props
-//                   }: HeadCellProps) => {
-//     const style = {
-//         th: clsx(s.headCell, !sortable && s.noSort, className),
-//         title: clsx(s.title),
-//         icon: clsx(s.sortDscIcon, sort?.direction === 'asc' && s.sortAscIcon),
-//     }
-//     const showSortIcon = sort?.columnKey === columnKey && sort?.direction
-//
-//     const handleClick = () => {
-//         if (onClick && columnKey) {
-//             onClick(columnKey)
-//         }
-//     }
-//
-//     return (
-//         <th className={style.th} {...props} onClick={handleClick}>
-//             <div className={style.title}>
-//                 <Typography variant={'regular-14'}>{title}</Typography>
-//                 <div className={style.icon}>{showSortIcon && <ArrowDownIcon />}</div>
-//             </div>
-//         </th>
-//     )
-// }
-// const Head = ({ columns, sort, onSort, className, ...rest }: HeadProps) => {
-//     const handlerSort = (key: string, sortable?: boolean) => {
-//         if (!onSort || !sortable) return
-//
-//         if (key !== sort?.columnKey) {
-//             return onSort({ columnKey: key, direction: 'asc' })
-//         }
-//         if (sort.direction === 'asc') {
-//             return onSort({ columnKey: key, direction: 'desc' })
-//         }
-//
-//         onSort(null)
-//     }
-//     const styles = { head: clsx(s.head, className) }
-//
-//     return (
-//         <thead className={styles.head} {...rest}>
-//         {columns.map(col => {
-//             const handler = () => {
-//                 handlerSort(col.key, col.sortable)
-//             }
-//
-//             return (
-//                 <HeadCell
-//                     sort={sort}
-//                     title={col.title}
-//                     onClick={handler}
-//                     key={col.key}
-//                     columnKey={col.key}
-//                     sortable={col.sortable}
-//                 />
-//             )
-//         })}
-//         </thead>
-//     )
-// }

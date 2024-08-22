@@ -16,12 +16,5 @@ export const ConfirmationModalStyled = {
     max-width: 48.6rem;
     max-height: 0;
     padding: 3rem 2.4rem;
-
-    visibility: hidden;
-
-    &.visible {
-      min-height: 18rem;
-      visibility: visible;
-    }
   `,
 }
