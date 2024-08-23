@@ -60,15 +60,15 @@ export const ConfirmationModal = ({
           <Select
             onChange={setReason}
             options={['Bad behavior', 'Advertising placement', 'Another reason']}
-            value={reason}
             placeholder={'Reason for ban'}
+            value={reason}
           />
         )}
         <Buttons>
-          <Button fullWidth={true} onClick={onConfirmation} variant={'outlined'}>
+          <Button fullWidth onClick={onConfirmation} variant={'outlined'}>
             {confirmBtnLabel || yes}
           </Button>
-          <Button fullWidth={true} onClick={onClose}>
+          <Button fullWidth onClick={onClose}>
             {declineBtnLabel || no}{' '}
           </Button>
         </Buttons>
