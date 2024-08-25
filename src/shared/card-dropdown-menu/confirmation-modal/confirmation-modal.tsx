@@ -23,10 +23,8 @@ export const ConfirmationModal = ({
   confirmBtnLabel,
   declineBtnLabel,
   isOpen,
-  message,
   onClose,
   onConfirmation,
-  title,
   translation = 'logOut',
   userName,
 }: ModalProps) => {
@@ -58,6 +56,7 @@ export const ConfirmationModal = ({
         </Typography>
         {action === 'ban' && (
           <Select
+            fullWidth
             onChange={setReason}
             options={['Bad behavior', 'Advertising placement', 'Another reason']}
             placeholder={'Reason for ban'}

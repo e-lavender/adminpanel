@@ -13,7 +13,7 @@ export type GetAllUsersQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetAllUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number }, users: Array<{ __typename?: 'User', profile: { __typename?: 'Profile', createdAt: any, aboutMe?: string | null, city?: string | null, dateOfBirth?: any | null, id: number, lastName?: string | null, firstName?: string | null, userName?: string | null, avatars?: Array<{ __typename?: 'Avatar', fileSize?: number | null, height?: number | null, url?: string | null, width?: number | null }> | null } }> } };
+export type GetAllUsersQuery = { __typename?: 'Query', getUsers: { __typename?: 'UsersPaginationModel', pagination: { __typename?: 'PaginationModel', page: number, pagesCount: number, pageSize: number, totalCount: number }, users: Array<{ __typename?: 'User', userBan?: { __typename?: 'UserBan', createdAt: any, reason: string } | null, profile: { __typename?: 'Profile', createdAt: any, aboutMe?: string | null, city?: string | null, dateOfBirth?: any | null, id: number, lastName?: string | null, firstName?: string | null, userName?: string | null, avatars?: Array<{ __typename?: 'Avatar', fileSize?: number | null, height?: number | null, url?: string | null, width?: number | null }> | null } }> } };
 
 export type RemoveUserMutationVariables = Types.Exact<{
   userId: Types.Scalars['Int'];
@@ -55,6 +55,10 @@ export const GetAllUsersDocument = gql`
       totalCount
     }
     users {
+      userBan {
+        createdAt
+        reason
+      }
       profile {
         createdAt
         aboutMe

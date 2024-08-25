@@ -14,12 +14,13 @@ export const ConfirmationModalStyled = {
     justify-content: space-between;
     align-items: flex-start;
     min-width: 37.8rem;
-    max-width: 48.6rem;
+    width: 100%;
     min-height: 16.8rem;
     height: fit-content;
     padding: 3.6rem 2.4rem;
   `,
   Select: styled(Select)`
+    width: 100%;
     margin: 1.8rem 0 4.8rem;
     background-color: var(--color-dark-300);
   `,
