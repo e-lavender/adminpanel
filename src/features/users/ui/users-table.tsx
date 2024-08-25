@@ -79,7 +79,10 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
           {data?.map((user, idx) => {
             return (
               <TableRow key={idx}>
-                <Table.DataCell>{user.profile.id}</Table.DataCell>
+                <Table.DataCell>
+                  {user.userBan && '💀'}
+                  {user.profile.id}
+                </Table.DataCell>
                 <Table.DataCell>{user.profile.userName}</Table.DataCell>
                 <Table.DataCell>
                   <Button as={Link} href={`${ROUTES.USER}${user.profile.id}`} variant={'link'}>

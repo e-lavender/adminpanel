@@ -24,6 +24,10 @@ export const USERS = gql`
         totalCount
       }
       users {
+        userBan {
+          createdAt
+          reason
+        }
         profile {
           createdAt
           aboutMe
