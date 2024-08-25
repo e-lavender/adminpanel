@@ -23,10 +23,8 @@ export const ConfirmationModal = ({
   confirmBtnLabel,
   declineBtnLabel,
   isOpen,
-  message,
   onClose,
   onConfirmation,
-  title,
   translation = 'logOut',
   userName,
 }: ModalProps) => {
