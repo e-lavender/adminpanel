@@ -62,6 +62,7 @@ export const ConfirmationModal = ({
             options={['Bad behavior', 'Advertising placement', 'Another reason']}
             placeholder={'Reason for ban'}
             value={reason}
+            width={'100%'}
           />
         )}
         <Buttons>
