@@ -3,7 +3,6 @@ import { PropsWithChildren, useRef } from 'react'
 import { useDisclose } from '@/shared/hooks/useDisclose'
 import { useOnClickOutside } from '@/shared/hooks/useOutsideClick'
 import { DropDownMenuStyled } from '@/ui/common/dropdown-menu/dropdown-menu-container/dropdown-menu-container.styled'
-import clsx from 'clsx'
 
 export type MenuProps = PropsWithChildren<{
   menuStyle?: string

@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 
-import {
-  useBanUserMutation,
-  useGetAllUsersQuery,
-  useRemoveUserMutation,
-} from '@/features/users/api/users-list.api.types'
+import { useGetAllUsersQuery } from '@/features/users/api/users-list.api.types'
 import { FILTER_OPTIONS, USERS_TABLE_COLUMNS } from '@/features/users/constants'
 import { UsersListStyled } from '@/features/users/ui/users-list.styled'
 import { UsersTable } from '@/features/users/ui/users-table'
@@ -22,7 +18,7 @@ export const UsersList = () => {
   const [filteredSearch, setFilteredSearch] = useState<string>('')
   const [filter, setFilter] = useState<UserBlockStatus>(UserBlockStatus.All)
 
-  const { data, loading } = useGetAllUsersQuery({
+  const { data, loading, refetch } = useGetAllUsersQuery({
     variables: {
       pageNumber: currentPage,
       pageSize: pageSize,
