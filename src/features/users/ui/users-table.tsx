@@ -27,11 +27,13 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
   const [userId, setUserId] = useState<number | undefined>(undefined)
   const [userName, setUserName] = useState<string>('')
   const [action, setAction] = useState<UserAllowActionType | undefined>(undefined)
+  const [reason, setReason] = useState('')
+
   const [deleteUser] = useRemoveUserMutation()
   const [banUser] = useBanUserMutation()
   const functions: Record<string, () => void> = {
     ban: () => {
-      userId && void banUser({ variables: { banReason: 'test', userId } })
+      userId && void banUser({ variables: { banReason: reason, userId } })
     },
     delete: () => {
       userId &&
@@ -63,6 +65,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
   const onConfirmationHandler = () => {
     functions[action!]()
     closeModalHandler()
+    setReason('')
   }
 
   return (
@@ -109,6 +112,8 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
         isOpen={isOpen}
         onClose={closeModalHandler}
         onConfirmation={onConfirmationHandler}
+        reason={reason}
+        setReason={setReason}
         translation={'deleteUser'}
         userName={userName}
       />

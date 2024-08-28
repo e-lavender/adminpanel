@@ -14,6 +14,8 @@ type ModalProps = {
   message?: string
   onClose: () => void
   onConfirmation: () => void
+  reason: string
+  setReason: (reason: string) => void
   title?: string
   translation?: string
   userName: string
@@ -25,6 +27,8 @@ export const ConfirmationModal = ({
   isOpen,
   onClose,
   onConfirmation,
+  reason,
+  setReason,
   translation = 'logOut',
   userName,
 }: ModalProps) => {
@@ -44,7 +48,6 @@ export const ConfirmationModal = ({
     title: translatedTitle,
     yes,
   } = t.confirmationModal[typedTranslation]
-  const [reason, setReason] = useState('')
 
   return (
     <Modal onChange={onClose} open={isOpen}>
