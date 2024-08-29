@@ -4,6 +4,7 @@ import { ROUTES } from '@/app/constants/routes'
 import {
   useBanUserMutation,
   useRemoveUserMutation,
+  useUnbanUserMutation,
 } from '@/features/users/api/users-list.api.types'
 import { UsersTableStyles } from '@/features/users/ui/users-table.styled'
 import { User } from '@/shared/appolo-client/Schema.types'
@@ -31,6 +32,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
 
   const [deleteUser] = useRemoveUserMutation()
   const [banUser] = useBanUserMutation()
+  const [unBanUser] = useUnbanUserMutation()
   const functions: Record<string, () => void> = {
     ban: () => {
       userId && void banUser({ variables: { banReason: reason, userId } })
@@ -44,6 +46,9 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
           .catch(err => {
             console.log('err', err)
           })
+    },
+    unBan: () => {
+      userId && void unBanUser({ variables: { userId } })
     },
   }
 
