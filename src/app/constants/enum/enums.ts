@@ -33,5 +33,6 @@ export const ACTION_TYPES = {
   follow: 'follow',
   info: 'info',
   report: 'report',
+  unban: 'unban',
   unfollow: 'unfollow',
 } as const
