@@ -47,7 +47,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
             console.log('err', err)
           })
     },
-    unBan: () => {
+    unban: () => {
       userId && void unBanUser({ variables: { userId } })
     },
   }
@@ -103,6 +103,7 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
                 <Table.DataCell>
                   <CardDropdownMenu
                     openModalHandler={openModalHandler}
+                    userBan={user.userBan}
                     userId={user.profile.id}
                     userName={user.profile.userName!}
                   />
