@@ -33,7 +33,7 @@ export const UsersList = () => {
     () =>
       data?.getUsers.users && (
         // @ts-ignore
-        <UsersTable columns={USERS_TABLE_COLUMNS} data={data?.getUsers.users} />
+        <UsersTable columns={USERS_TABLE_COLUMNS} data={data?.getUsers.users} refetch={refetch} />
       ),
     [data?.getUsers.users]
   )
