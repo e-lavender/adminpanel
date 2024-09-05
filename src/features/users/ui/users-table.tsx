@@ -22,7 +22,8 @@ export type HandlerType = {
   userId: number
   userName: string
 }
-export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; data: User[] }) => {
+type Props = { columns: TableHeaderModel[]; data: User[]; refetch: () => void }
+export const UsersTable = ({ columns, data, refetch }: Props) => {
   const { TableBody, TableHead, TableHeadCell, TableRoot, TableRow } = UsersTableStyles
   const { isOpen, onClose, onOpen } = useDisclose()
   const [userId, setUserId] = useState<number | undefined>(undefined)
@@ -35,20 +36,26 @@ export const UsersTable = ({ columns, data }: { columns: TableHeaderModel[]; dat
   const [unBanUser] = useUnbanUserMutation()
   const functions: Record<string, () => void> = {
     ban: () => {
-      userId && void banUser({ variables: { banReason: reason, userId } })
+      userId &&
+        banUser({ variables: { banReason: reason, userId } }).then(() => {
+          refetch()
+        })
     },
     delete: () => {
       userId &&
         deleteUser({ variables: { userId } })
           .then(res => {
-            console.log('res', res)
+            refetch()
           })
           .catch(err => {
             console.log('err', err)
           })
     },
     unban: () => {
-      userId && void unBanUser({ variables: { userId } })
+      userId &&
+        unBanUser({ variables: { userId } }).then(() => {
+          refetch()
+        })
     },
   }
 
